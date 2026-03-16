@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply for Admission | Suffah Grammar School</title>
+  <link rel="icon" type="image/png" href="images/crest_blue.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0e1e3a;--blue-dark:#1a3460;--blue-mid:#2b5297;--blue:#3a6bbf;
+      --blue-light:#6a9fd4;--blue-pale:#dde9f7;--blue-faint:#f0f5fc;
+      --cream:#f7f5f0;--warm-white:#fdfcfa;--text-dark:#0e1e3a;
+      --text-mid:#3a4e6b;--text-light:#7a8ea8;--gold:#c8a152;--gold-light:#e6c87a;
+      --green:#2e7d52;--green-light:#e8f5ee;
+      --trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--warm-white);color:var(--text-dark);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:92px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 4px 32px rgba(14,30,58,.5)}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;flex-direction:column;justify-content:center}
+    .nav-logo-main{font-family:var(--trajan);font-size:26px;font-weight:600;color:var(--warm-white);letter-spacing:.06em;line-height:1.2}
+    .nav-logo-sub{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-light);margin-top:4px}
+    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+    .nav-links a{font-size:14px;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:rgba(253,252,250,.7);text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--warm-white)}
+    .nav-cta{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:12px 26px;border-radius:2px;text-decoration:none;transition:background .2s;white-space:nowrap}
+    .nav-cta:hover{background:var(--gold-light)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--warm-white)}
+    .mobile-menu{display:none;position:fixed;top:92px;left:0;right:0;z-index:199;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:24px 32px;flex-direction:column}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(253,252,250,.75);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+    .mobile-menu a:last-child{border-bottom:none;margin-top:16px;color:var(--gold)}
+
+    /* PAGE HEADER */
+    .page-header{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden}
+    .page-header-accent{position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(58,107,191,.15) 0%,transparent 70%);pointer-events:none}
+    .page-header-inner{max-width:680px;position:relative;z-index:2}
+    .section-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:18px;display:block}
+    .page-header h1{font-family:var(--trajan);font-size:clamp(26px,5vw,52px);font-weight:400;color:var(--warm-white);margin-bottom:16px;letter-spacing:.03em;line-height:1.15}
+    .page-header p{font-size:17px;line-height:1.75;color:rgba(253,252,250,.65);max-width:520px}
+    .promo-badge{display:inline-block;background:rgba(200,161,82,.15);border:1px solid rgba(200,161,82,.3);border-radius:2px;padding:12px 20px;margin-top:24px;font-size:13px;color:var(--gold-light);line-height:1.55}
+
+    /* PROCESS STEPS */
+    .process-strip{background:var(--blue-mid);padding:48px}
+    .process-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+    .process-inner::before{content:'';position:absolute;top:20px;left:10%;right:10%;height:1px;background:rgba(255,255,255,.2);z-index:0}
+    .process-step{text-align:center;position:relative;z-index:1}
+    .process-num{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:var(--trajan);font-size:14px;font-weight:500;color:var(--gold-light)}
+    .process-step h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--warm-white);margin-bottom:4px}
+    .process-step p{font-size:14px;color:rgba(253,252,250,.5);line-height:1.4}
+
+    /* MAIN FORM AREA */
+    .form-area{max-width:860px;margin:0 auto;padding:72px 48px}
+
+    /* STEPPER */
+    .stepper{display:flex;gap:0;margin-bottom:52px;border-bottom:1px solid rgba(14,30,58,.1)}
+    .step-btn{
+      flex:1;padding:0 0 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+      font-weight:500;color:var(--text-light);border:none;background:none;cursor:default;
+      border-bottom:2px solid transparent;display:flex;flex-direction:column;align-items:center;gap:6px;
+    }
+    .step-btn.done{color:var(--blue-mid);border-bottom-color:transparent;cursor:pointer}
+    .step-btn.done .step-dot{background:var(--blue-mid)}
+    .step-btn.active{color:var(--blue-mid);border-bottom-color:var(--blue-mid)}
+    .step-btn.active .step-dot{background:var(--blue-mid);border-color:var(--blue-mid)}
+    .step-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--text-light);background:transparent;transition:all .2s}
+
+    /* FORM PANELS */
+    .form-panel{display:none;animation:fadeIn .3s ease}
+    .form-panel.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    .panel-title{font-family:var(--trajan);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:6px;letter-spacing:.04em}
+    .panel-subtitle{font-size:17px;color:var(--text-light);margin-bottom:32px;line-height:1.55}
+
+    .form-group{margin-bottom:22px}
+    .form-group label{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--text-mid);margin-bottom:7px}
+    .form-group label .req{color:var(--blue);margin-left:2px}
+    .form-group input,.form-group select,.form-group textarea{
+      width:100%;padding:13px 16px;font-family:var(--sans);font-size:16px;
+      color:var(--text-dark);background:var(--warm-white);
+      border:1px solid rgba(14,30,58,.15);border-radius:2px;
+      outline:none;transition:border-color .2s,box-shadow .2s;
+    }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+      border-color:var(--blue-mid);box-shadow:0 0 0 3px rgba(43,82,151,.08);
+    }
+    .form-group input.error,.form-group select.error{border-color:#c0392b}
+    .error-msg{font-size:13px;color:#c0392b;margin-top:5px;display:none}
+    .form-group input.error + .error-msg,.form-group select.error + .error-msg{display:block}
+    .form-group textarea{resize:vertical;min-height:100px;line-height:1.6}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+
+    .form-section-divider{border:none;border-top:1px solid rgba(14,30,58,.08);margin:32px 0}
+    .form-section-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--blue);margin-bottom:20px;display:block}
+
+    .checkbox-group{display:flex;flex-direction:column;gap:10px}
+    .checkbox-item{display:flex;align-items:flex-start;gap:12px;cursor:pointer}
+    .checkbox-item input[type="checkbox"]{width:17px;height:17px;margin-top:1px;accent-color:var(--blue-mid);flex-shrink:0}
+    .checkbox-item span{font-size:16px;color:var(--text-mid);line-height:1.5}
+
+    .radio-group{display:flex;flex-wrap:wrap;gap:12px}
+    .radio-item{display:flex;align-items:center;gap:8px;cursor:pointer;padding:10px 16px;border:1px solid rgba(14,30,58,.15);border-radius:2px;transition:border-color .2s,background .2s}
+    .radio-item:has(input:checked){border-color:var(--blue-mid);background:rgba(43,82,151,.05)}
+    .radio-item input{accent-color:var(--blue-mid)}
+    .radio-item span{font-size:15px;color:var(--text-mid)}
+
+    /* REVIEW BOX */
+    .review-box{background:var(--blue-faint);border-radius:3px;padding:28px 32px;margin-bottom:24px;border:1px solid rgba(14,30,58,.07)}
+    .review-box h4{font-family:var(--trajan);font-size:15px;font-weight:500;color:var(--navy);letter-spacing:.06em;margin-bottom:16px}
+    .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+    .review-item .rl{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:2px}
+    .review-item .rv{font-size:16px;color:var(--text-dark)}
+
+    .declaration{background:rgba(200,161,82,.06);border:1px solid rgba(200,161,82,.2);border-radius:3px;padding:20px 24px;margin-bottom:24px}
+    .declaration p{font-size:15px;line-height:1.7;color:var(--text-mid)}
+
+    /* NAV BUTTONS */
+    .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:36px}
+    .btn-back{font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);background:none;border:1px solid rgba(14,30,58,.15);padding:13px 28px;border-radius:2px;cursor:pointer;transition:all .2s}
+    .btn-back:hover{border-color:var(--blue-mid);color:var(--blue-mid)}
+    .btn-next{font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-white);background:var(--blue-mid);border:none;padding:14px 36px;border-radius:2px;cursor:pointer;transition:background .2s}
+    .btn-next:hover{background:var(--navy)}
+    .btn-submit{font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--gold);border:none;padding:14px 36px;border-radius:2px;cursor:pointer;transition:background .2s}
+    .btn-submit:hover{background:var(--gold-light)}
+
+    /* PROGRESS BAR */
+    .progress-bar{height:3px;background:rgba(14,30,58,.08);position:relative;overflow:hidden}
+    .progress-fill{height:100%;background:var(--blue-mid);transition:width .4s ease}
+
+    /* SUCCESS */
+    .success-screen{display:none;text-align:center;padding:64px 32px}
+    .success-screen.show{display:block;animation:fadeIn .5s ease}
+    .success-crest{width:80px;margin:0 auto 24px;opacity:.85}
+    .success-screen h2{font-family:var(--trajan);font-size:28px;font-weight:500;color:var(--navy);margin-bottom:16px;letter-spacing:.04em}
+    .success-screen p{font-size:17px;color:var(--text-mid);line-height:1.75;max-width:480px;margin:0 auto 28px}
+    .success-ref{display:inline-block;font-family:var(--trajan);font-size:18px;font-weight:500;color:var(--blue-mid);background:var(--blue-faint);border:1px solid var(--blue-pale);border-radius:3px;padding:12px 28px;margin-bottom:28px;letter-spacing:.06em}
+    .success-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .success-actions a{font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;text-decoration:none;padding:13px 28px;border-radius:2px;transition:all .2s}
+    .sa-primary{color:var(--warm-white);background:var(--blue-mid)}
+    .sa-primary:hover{background:var(--navy)}
+    .sa-secondary{color:var(--blue-mid);border:1px solid var(--blue-light)}
+    .sa-secondary:hover{background:var(--blue-faint)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:var(--warm-white);padding:40px 48px 28px}
+    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-bottom-left{display:flex;align-items:center;gap:20px}
+    .footer-bottom-left img{height:48px;mix-blend-mode:screen}
+    .footer-bottom-left p{font-size:14px;color:rgba(253,252,250,.35)}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-links a{font-size:14px;color:rgba(253,252,250,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+    .footer-links a:hover{color:var(--warm-white)}
+
+    /* MOBILE */
+    @media(max-width:960px){
+      nav{padding:0 24px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .page-header{padding:120px 28px 60px}
+      .process-strip{padding:40px 28px}
+      .process-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+      .process-inner::before{display:none}
+      .form-area{padding:48px 28px}
+      .form-row,.form-row-3{grid-template-columns:1fr}
+      .review-grid{grid-template-columns:1fr}
+      .stepper{gap:0;overflow-x:auto;padding-bottom:2px}
+      .step-btn{min-width:80px;padding-bottom:14px;font-size:10px}
+    }
+    @media(max-width:600px){
+      .radio-group{flex-direction:column}
+      .form-nav{flex-direction:column-reverse;gap:12px}
+      .btn-back,.btn-next,.btn-submit{width:100%;text-align:center}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-main">Suffah Grammar School</span>
+    <span class="nav-logo-sub">Quetta, Pakistan</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="index.html#academics">Academics</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta active">Apply Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="index.html#programmes">Programmes</a>
+  <a href="index.html#academics">Academics</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="apply.html">Apply Now →</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-accent"></div>
+  <div class="page-header-inner">
+    <span class="section-label" style="color:var(--gold)">Admissions 2025 – 2026</span>
+    <h1>Apply to<br>Suffah Grammar</h1>
+    <p>Complete our short application form and we'll be in touch within two working days to arrange your child's assessment and family interview.</p>
+    <div class="promo-badge">Special fee waivers available for our earliest applicants — enquire to find out more.</div>
+  </div>
+</div>
+
+<!-- PROCESS STEPS -->
+<div class="process-strip" id="process">
+  <div class="process-inner">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <h4>Application</h4>
+      <p>Complete this form online</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <h4>Assessment</h4>
+      <p>Age-appropriate evaluation</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <h4>Interview</h4>
+      <p>Family meeting with leadership</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <h4>Offer</h4>
+      <p>Letter of Acceptance &amp; Welcome Pack</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:25%"></div></div>
+
+<!-- MAIN FORM -->
+<div class="form-area">
+
+  <!-- STEPPER -->
+  <div class="stepper">
+    <button class="step-btn active" id="step-btn-1" onclick="goToStep(1)">
+      <span class="step-dot"></span>Student
+    </button>
+    <button class="step-btn" id="step-btn-2" onclick="goToStep(2)">
+      <span class="step-dot"></span>Parent / Guardian
+    </button>
+    <button class="step-btn" id="step-btn-3" onclick="goToStep(3)">
+      <span class="step-dot"></span>Previous School
+    </button>
+    <button class="step-btn" id="step-btn-4" onclick="goToStep(4)">
+      <span class="step-dot"></span>Review &amp; Submit
+    </button>
+  </div>
+
+  <form id="application-form" novalidate>
+
+    <!-- ── STEP 1: STUDENT ── -->
+    <div class="form-panel active" id="panel-1">
+      <p class="panel-title">Student Information</p>
+      <p class="panel-subtitle">Tell us about your child. All fields marked with <span style="color:var(--blue)">*</span> are required.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="s-fname" required placeholder="e.g. Fatima"/>
+          <p class="error-msg">Please enter the student's first name.</p>
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="s-lname" required placeholder="e.g. Khan"/>
+          <p class="error-msg">Please enter the student's last name.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" id="s-dob" required/>
+          <p class="error-msg">Please enter the date of birth.</p>
+        </div>
+        <div class="form-group">
+          <label>Gender <span class="req">*</span></label>
+          <select id="s-gender" required>
+            <option value="">Select…</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <p class="error-msg">Please select a gender.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Applying for Programme <span class="req">*</span></label>
+          <select id="s-programme" required>
+            <option value="">Select programme…</option>
+            <option>Early Years (Pre-K – Grade II)</option>
+            <option>Primary (Grades III – V)</option>
+            <option>Middle School (Grades VI – VIII)</option>
+            <option>Senior / O Levels (Grades IX – XI)</option>
+          </select>
+          <p class="error-msg">Please select a programme.</p>
+        </div>
+        <div class="form-group">
+          <label>Grade / Class Applying For <span class="req">*</span></label>
+          <select id="s-grade" required>
+            <option value="">Select grade…</option>
+            <option>Pre-Kindergarten</option>
+            <option>Kindergarten (KG 1)</option>
+            <option>KG 2</option>
+            <option>Grade I</option>
+            <option>Grade II</option>
+            <option>Grade III</option>
+            <option>Grade IV</option>
+            <option>Grade V</option>
+            <option>Grade VI</option>
+            <option>Grade VII</option>
+            <option>Grade VIII</option>
+            <option>Grade IX</option>
+            <option>Grade X</option>
+            <option>Grade XI (A Levels)</option>
+          </select>
+          <p class="error-msg">Please select a grade.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Start Term</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="start-term" value="Spring 2026" checked/><span>Spring 2026</span></label>
+          <label class="radio-item"><input type="radio" name="start-term" value="Autumn 2026"/><span>Autumn 2026</span></label>
+          <label class="radio-item"><input type="radio" name="start-term" value="As soon as possible"/><span>As soon as possible</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Does your child have any learning needs, allergies, or medical conditions we should be aware of?</label>
+        <textarea id="s-needs" placeholder="Optional — please share anything that would help us support your child better."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <span></span>
+        <button type="button" class="btn-next" onclick="nextStep(1)">Next: Parent Info →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: PARENT ── -->
+    <div class="form-panel" id="panel-2">
+      <p class="panel-title">Parent / Guardian Information</p>
+      <p class="panel-subtitle">We'll use these details to contact you about your child's application and to arrange the family interview.</p>
+
+      <span class="form-section-label">Primary Contact</span>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="p-fname" required placeholder="e.g. Ahmed Khan"/>
+          <p class="error-msg">Please enter your full name.</p>
+        </div>
+        <div class="form-group">
+          <label>Relationship to Student <span class="req">*</span></label>
+          <select id="p-rel" required>
+            <option value="">Select…</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Guardian</option>
+            <option>Other</option>
+          </select>
+          <p class="error-msg">Please select your relationship.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>CNIC Number <span class="req">*</span></label>
+          <input type="text" id="p-nic" required placeholder="XXXXX-XXXXXXX-X" maxlength="15" oninput="formatNIC(this)"/>
+          <p class="error-msg">Please enter a valid CNIC number.</p>
+        </div>
+        <div class="form-group">
+          <label>Profession <span class="req">*</span></label>
+          <select id="p-profession" required>
+            <option value="">Select…</option>
+            <option>Government Employee</option>
+            <option>Private Sector / Corporate</option>
+            <option>Business / Self-Employed</option>
+            <option>Doctor / Healthcare</option>
+            <option>Engineer</option>
+            <option>Teacher / Academic</option>
+            <option>Lawyer / Legal</option>
+            <option>Military / Law Enforcement</option>
+            <option>Housewife / Homemaker</option>
+            <option>Retired</option>
+            <option>Other</option>
+          </select>
+          <p class="error-msg">Please select your profession.</p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone / WhatsApp <span class="req">*</span></label>
+          <input type="tel" id="p-phone" required placeholder="+92 3XX XXXXXXX"/>
+          <p class="error-msg">Please enter a contact number.</p>
+        </div>
+        <div class="form-group">
+          <label>Email Address <span style="font-size:10px;color:var(--text-light);letter-spacing:.06em">(optional)</span></label>
+          <input type="email" id="p-email" placeholder="your@email.com"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Residential Address</label>
+        <input type="text" id="p-address" placeholder="Street address, area, Quetta"/>
+      </div>
+
+      <hr class="form-section-divider"/>
+      <span class="form-section-label">Second Contact (Optional)</span>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="p2-name" placeholder="e.g. Ayesha Khan"/>
+        </div>
+        <div class="form-group">
+          <label>Relationship to Student</label>
+          <select id="p2-rel">
+            <option value="">Select…</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Guardian</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="p2-phone" placeholder="+92 3XX XXXXXXX"/>
+        </div>
+        <div class="form-group">
+          <label>Profession</label>
+          <select id="p2-profession">
+            <option value="">Select…</option>
+            <option>Government Employee</option>
+            <option>Private Sector / Corporate</option>
+            <option>Business / Self-Employed</option>
+            <option>Doctor / Healthcare</option>
+            <option>Engineer</option>
+            <option>Teacher / Academic</option>
+            <option>Lawyer / Legal</option>
+            <option>Military / Law Enforcement</option>
+            <option>Housewife / Homemaker</option>
+            <option>Retired</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>How did you hear about Suffah Grammar?</label>
+        <select id="p-source">
+          <option value="">Select…</option>
+          <option>Friend or family referral</option>
+          <option>Social media (Facebook / Instagram)</option>
+          <option>Google / online search</option>
+          <option>Newspaper or magazine</option>
+          <option>Passing by / signage</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(2)">Next: Previous School →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: PREVIOUS SCHOOL ── -->
+    <div class="form-panel" id="panel-3">
+      <p class="panel-title">Previous School Information</p>
+      <p class="panel-subtitle">This helps us understand your child's academic background and ensure a smooth transition.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Current / Previous School Name</label>
+          <input type="text" id="prev-school" placeholder="e.g. City Grammar School, Quetta"/>
+        </div>
+        <div class="form-group">
+          <label>Current Grade / Class</label>
+          <input type="text" id="prev-grade" placeholder="e.g. Grade V / Class 5"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Medium of Instruction</label>
+          <select id="prev-medium">
+            <option value="">Select…</option>
+            <option>English</option>
+            <option>Urdu</option>
+            <option>Bilingual (English / Urdu)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Year of Last Attendance</label>
+          <input type="text" id="prev-year" placeholder="e.g. 2024 – 2025"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Reason for Switching Schools</label>
+        <textarea id="prev-reason" placeholder="Optional — please share why you are looking for a new school."></textarea>
+      </div>
+
+      <hr class="form-section-divider"/>
+
+      <div class="form-group">
+        <label>Which of the following best describes your child? (Select all that apply)</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="curious"/> <span>Curious and loves to ask questions</span></label>
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="creative"/> <span>Creative and enjoys art, music, or drama</span></label>
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="sporty"/> <span>Active and sporty</span></label>
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="tech"/> <span>Interested in technology and computing</span></label>
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="social"/> <span>Social and community-minded</span></label>
+          <label class="checkbox-item"><input type="checkbox" name="child-desc" value="needs-support"/> <span>Needs extra academic support</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Anything else you'd like us to know about your child?</label>
+        <textarea id="other-notes" placeholder="Optional — share anything you feel is important."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button type="button" class="btn-next" onclick="nextStep(3)">Review Application →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: REVIEW ── -->
+    <div class="form-panel" id="panel-4">
+      <p class="panel-title">Review &amp; Submit</p>
+      <p class="panel-subtitle">Please review your details before submitting. You can go back to any section to make changes.</p>
+
+      <div class="review-box" id="review-student">
+        <h4>Student Details</h4>
+        <div class="review-grid" id="review-student-grid"></div>
+      </div>
+
+      <div class="review-box" id="review-parent">
+        <h4>Parent / Guardian Details</h4>
+        <div class="review-grid" id="review-parent-grid"></div>
+      </div>
+
+      <div class="review-box" id="review-school">
+        <h4>Previous School</h4>
+        <div class="review-grid" id="review-school-grid"></div>
+      </div>
+
+      <div class="declaration">
+        <p>By submitting this application I confirm that the information provided is accurate and complete. I understand that Suffah Grammar School may contact me to arrange the assessment and interview, and that submission of this form does not guarantee admission.</p>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-item" style="cursor:pointer">
+          <input type="checkbox" id="declaration-check" required/>
+          <span>I agree to the declaration above and consent to Suffah Grammar School contacting me about this application. <span class="req">*</span></span>
+        </label>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button type="button" class="btn-submit" onclick="submitApplication()">Submit Application ✓</button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS SCREEN -->
+  <div class="success-screen" id="success-screen">
+    <img class="success-crest" src="images/crest_blue.png" alt="Suffah Grammar School"/>
+    <h2>Application Received</h2>
+    <p>Thank you for applying to Suffah Grammar School. We have received your application and will be in touch within <strong>two working days</strong> to arrange your child's assessment and your family interview.</p>
+    <div class="success-ref" id="success-ref">SGS-2025-0001</div>
+    <p style="font-size:15px;color:var(--text-light);margin-bottom:28px">Please save your reference number above. You may also contact us on WhatsApp if you have any questions.</p>
+    <div class="success-actions">
+      <a href="https://wa.me/923398877886?text=Hello%2C%20I%20just%20submitted%20an%20application%20and%20my%20reference%20number%20is%20" class="sa-primary" target="_blank">Contact Us on WhatsApp</a>
+      <a href="index.html" class="sa-secondary">Return to Homepage</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <div style="font-family:'Cinzel',Georgia,serif;font-size:22px;font-weight:600;color:var(--warm-white);letter-spacing:.06em">Suffah Grammar School</div>
+      <p>&#169; 2025 Suffah Grammar School. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://wa.me/923398877886" target="_blank">WhatsApp</a>
+      <a href="https://www.facebook.com/731927980005603" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/suffahgrammar" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 4;
+
+  function formatNIC(input){
+    let v = input.value.replace(/[^0-9]/g,'');
+    if(v.length > 5 && v.length <= 12) v = v.slice(0,5) + '-' + v.slice(5);
+    else if(v.length > 12) v = v.slice(0,5) + '-' + v.slice(5,12) + '-' + v.slice(12,13);
+    input.value = v;
+  }
+
+  window.addEventListener('scroll',()=>{
+    document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
+  });
+  document.getElementById('hamburger').addEventListener('click',()=>{
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
+  function goToStep(n){
+    if(n >= currentStep) return; // only go back via prev buttons
+    switchStep(n);
+  }
+
+  function nextStep(from){
+    if(!validateStep(from)) return;
+    if(from === 3) buildReview();
+    switchStep(from + 1);
+  }
+
+  function prevStep(from){
+    switchStep(from - 1);
+  }
+
+  function switchStep(n){
+    document.getElementById('panel-' + currentStep).classList.remove('active');
+    document.getElementById('step-btn-' + currentStep).classList.remove('active');
+    if(n > currentStep){
+      document.getElementById('step-btn-' + currentStep).classList.add('done');
+    } else {
+      document.getElementById('step-btn-' + (currentStep)).classList.remove('done');
+    }
+    currentStep = n;
+    document.getElementById('panel-' + currentStep).classList.add('active');
+    document.getElementById('step-btn-' + currentStep).classList.add('active');
+    document.getElementById('progress-fill').style.width = (currentStep / totalSteps * 100) + '%';
+    window.scrollTo({top: document.querySelector('.progress-bar').offsetTop - 80, behavior:'smooth'});
+  }
+
+  function validateStep(step){
+    let valid = true;
+    const required = document.querySelectorAll('#panel-' + step + ' [required]');
+    required.forEach(field => {
+      field.classList.remove('error');
+      if(!field.value.trim()){
+        field.classList.add('error');
+        valid = false;
+      }
+    });
+    return valid;
+  }
+
+  function buildReview(){
+    const studentGrid = document.getElementById('review-student-grid');
+    const parentGrid = document.getElementById('review-parent-grid');
+    const schoolGrid = document.getElementById('review-school-grid');
+
+    const startTerm = document.querySelector('input[name="start-term"]:checked')?.value || '—';
+
+    studentGrid.innerHTML = rv('Full Name', (v('s-fname') + ' ' + v('s-lname')).trim()) +
+      rv('Date of Birth', v('s-dob')) + rv('Gender', v('s-gender','select')) +
+      rv('Programme', v('s-programme','select')) + rv('Grade', v('s-grade','select')) +
+      rv('Start Term', startTerm);
+
+    parentGrid.innerHTML = rv('Name', v('p-fname')) + rv('Relationship', v('p-rel','select')) +
+      rv('CNIC', v('p-nic')) + rv('Profession', v('p-profession','select')) +
+      rv('Phone / WhatsApp', v('p-phone')) + rv('Email', v('p-email') || '—') +
+      rv('Address', v('p-address') || '—');
+
+    schoolGrid.innerHTML = rv('School', v('prev-school') || '—') +
+      rv('Grade Attended', v('prev-grade') || '—') +
+      rv('Medium', v('prev-medium','select') || '—') +
+      rv('Last Year', v('prev-year') || '—');
+  }
+
+  function rv(label, value){
+    return `<div class="review-item"><p class="rl">${label}</p><p class="rv">${value || '—'}</p></div>`;
+  }
+
+  function v(id, type){
+    const el = document.getElementById(id);
+    if(!el) return '';
+    return el.value;
+  }
+
+  async function submitApplication(){
+    const decl = document.getElementById('declaration-check');
+    if(!decl.checked){
+      decl.parentElement.style.color = '#c0392b';
+      decl.parentElement.querySelector('span').style.color = '#c0392b';
+      return;
+    }
+
+    const submitBtn = document.querySelector('.btn-submit');
+    submitBtn.textContent = 'Submitting…';
+    submitBtn.disabled = true;
+
+    const startTerm = document.querySelector('input[name="start-term"]:checked')?.value || '—';
+    const childDesc = [...document.querySelectorAll('input[name="child-desc"]:checked')].map(c=>c.value).join(', ') || '—';
+    const ref = 'SGS-2025-' + Math.floor(1000 + Math.random() * 9000);
+
+    const payload = {
+      _subject: `New Application [${ref}] — ${v('s-fname')} ${v('s-lname')}`,
+      reference: ref,
+      // Student
+      student_name: v('s-fname') + ' ' + v('s-lname'),
+      student_dob: v('s-dob'),
+      student_gender: v('s-gender'),
+      programme: v('s-programme'),
+      grade: v('s-grade'),
+      start_term: startTerm,
+      special_needs: v('s-needs') || '—',
+      // Parent
+      parent_name: v('p-fname'),
+      parent_relationship: v('p-rel'),
+      parent_cnic: v('p-nic'),
+      parent_profession: v('p-profession'),
+      parent_phone: v('p-phone'),
+      parent_email: v('p-email') || '—',
+      parent_address: v('p-address') || '—',
+      second_contact_name: v('p2-name') || '—',
+      second_contact_phone: v('p2-phone') || '—',
+      second_contact_profession: v('p2-profession') || '—',
+      how_heard: v('p-source') || '—',
+      // School
+      previous_school: v('prev-school') || '—',
+      previous_grade: v('prev-grade') || '—',
+      medium: v('prev-medium') || '—',
+      last_year: v('prev-year') || '—',
+      reason_switching: v('prev-reason') || '—',
+      child_description: childDesc,
+      other_notes: v('other-notes') || '—',
+    };
+
+    try {
+      // ⚠️  REPLACE "YOUR_FORM_ID" below with your Formspree form ID after signing up at formspree.io
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if(!res.ok) throw new Error('Network error');
+
+      document.getElementById('success-ref').textContent = ref;
+      document.getElementById('application-form').style.display = 'none';
+      document.querySelector('.stepper').style.display = 'none';
+      document.getElementById('success-screen').classList.add('show');
+      window.scrollTo({top: document.querySelector('.form-area').offsetTop - 80, behavior:'smooth'});
+      document.querySelector('.sa-primary').href =
+        'https://wa.me/923398877886?text=Hello%2C%20I%20just%20submitted%20an%20application.%20My%20reference%20number%20is%20' + encodeURIComponent(ref);
+
+    } catch(err) {
+      submitBtn.textContent = 'Submit Application ✓';
+      submitBtn.disabled = false;
+      alert('There was a problem submitting your application. Please try again or contact us on WhatsApp.');
+    }
+  }
+</script>
+</body>
+</html>

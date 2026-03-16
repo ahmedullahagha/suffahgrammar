@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Suffah Grammar School</title>
+  <link rel="icon" type="image/png" href="images/crest_blue.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0e1e3a;--blue-dark:#1a3460;--blue-mid:#2b5297;--blue:#3a6bbf;
+      --blue-light:#6a9fd4;--blue-pale:#dde9f7;--blue-faint:#f0f5fc;
+      --cream:#f7f5f0;--warm-white:#fdfcfa;--text-dark:#0e1e3a;
+      --text-mid:#3a4e6b;--text-light:#7a8ea8;--gold:#c8a152;--gold-light:#e6c87a;
+      --trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--warm-white);color:var(--text-dark);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:92px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 4px 32px rgba(14,30,58,.5)}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;flex-direction:column;justify-content:center}
+    .nav-logo-main{font-family:var(--trajan);font-size:26px;font-weight:600;color:var(--warm-white);letter-spacing:.06em;line-height:1.2}
+    .nav-logo-sub{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-light);margin-top:4px}
+    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+    .nav-links a{font-size:14px;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:rgba(253,252,250,.7);text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--warm-white)}
+    .nav-cta{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:12px 26px;border-radius:2px;text-decoration:none;transition:background .2s;white-space:nowrap}
+    .nav-cta:hover{background:var(--gold-light)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--warm-white)}
+    .mobile-menu{display:none;position:fixed;top:92px;left:0;right:0;z-index:199;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:24px 32px;flex-direction:column}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(253,252,250,.75);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+    .mobile-menu a:last-child{border-bottom:none;margin-top:16px;color:var(--gold)}
+    .mobile-menu a:hover{color:var(--warm-white)}
+
+    /* PAGE HEADER */
+    .page-header{
+      background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden;
+    }
+    .page-header-accent{position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(58,107,191,.15) 0%,transparent 70%);pointer-events:none}
+    .page-header-inner{max-width:700px;position:relative;z-index:2}
+    .page-header .section-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:18px;display:block}
+    .page-header h1{font-family:var(--trajan);font-size:clamp(28px,5vw,56px);font-weight:400;color:var(--warm-white);margin-bottom:16px;letter-spacing:.03em;line-height:1.15}
+    .page-header p{font-size:16px;line-height:1.75;color:rgba(253,252,250,.65);max-width:520px}
+
+    /* CONTACT LAYOUT */
+    .contact-layout{display:grid;grid-template-columns:1fr 1.2fr;max-width:1100px;margin:0 auto;gap:0;padding:80px 48px}
+    .contact-info-col{padding-right:64px;border-right:1px solid rgba(14,30,58,.1)}
+
+    .info-block{margin-bottom:40px}
+    .info-block h3{font-family:var(--trajan);font-size:16px;font-weight:500;color:var(--navy);letter-spacing:.08em;margin-bottom:12px}
+    .info-block p,.info-block a{font-size:17px;line-height:1.8;color:var(--text-mid);text-decoration:none;display:block}
+    .info-block a:hover{color:var(--blue-mid)}
+    .info-block .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-light);font-weight:500;margin-bottom:4px}
+
+    .wa-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      background:#25D366;color:#fff;font-size:12px;font-weight:500;
+      letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+      padding:12px 22px;border-radius:2px;margin-top:8px;transition:background .2s;
+    }
+    .wa-btn:hover{background:#1ebe58}
+    .wa-icon{font-size:16px}
+
+    .map-embed{
+      margin-top:40px;border-radius:4px;overflow:hidden;
+      border:1px solid rgba(14,30,58,.1);
+    }
+    .map-embed iframe{display:block;width:100%;height:260px;border:none;filter:grayscale(20%)}
+
+    /* CONTACT FORM */
+    .contact-form-col{padding-left:64px}
+    .contact-form-col h2{font-family:var(--trajan);font-size:24px;font-weight:500;color:var(--navy);margin-bottom:8px;letter-spacing:.04em}
+    .contact-form-col > p{font-size:16px;color:var(--text-light);margin-bottom:32px;line-height:1.6}
+
+    .form-group{margin-bottom:20px}
+    .form-group label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--text-mid);margin-bottom:7px}
+    .form-group input,.form-group select,.form-group textarea{
+      width:100%;padding:13px 16px;font-family:var(--sans);font-size:16px;
+      color:var(--text-dark);background:var(--warm-white);
+      border:1px solid rgba(14,30,58,.15);border-radius:2px;
+      outline:none;transition:border-color .2s;
+    }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue-mid)}
+    .form-group textarea{resize:vertical;min-height:120px;line-height:1.6}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-submit{
+      width:100%;padding:15px;font-family:var(--sans);font-size:13px;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;color:var(--warm-white);
+      background:var(--blue-mid);border:none;border-radius:2px;cursor:pointer;
+      transition:background .2s;margin-top:8px;
+    }
+    .form-submit:hover{background:var(--navy)}
+    .form-success{display:none;background:rgba(43,82,151,.08);border:1px solid rgba(43,82,151,.2);border-radius:3px;padding:20px;text-align:center;margin-top:16px}
+    .form-success p{font-size:14px;color:var(--blue-mid);line-height:1.6}
+
+    /* VISIT STRIP */
+    .visit-strip{background:var(--blue-faint);padding:64px 48px}
+    .visit-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+    .visit-card{text-align:center;padding:32px 24px}
+    .visit-icon{font-size:28px;margin-bottom:16px}
+    .visit-card h4{font-family:var(--trajan);font-size:16px;font-weight:500;color:var(--navy);margin-bottom:10px;letter-spacing:.06em}
+    .visit-card p{font-size:15px;color:var(--text-mid);line-height:1.7}
+    .visit-card a{font-size:14px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--blue-mid);text-decoration:none;border-bottom:1px solid var(--blue-light);padding-bottom:1px;display:inline-block;margin-top:10px}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:var(--warm-white);padding:64px 48px 32px}
+    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-bottom-left{display:flex;align-items:center;gap:20px}
+    .footer-bottom-left img{height:48px;mix-blend-mode:screen}
+    .footer-bottom-left p{font-size:14px;color:rgba(253,252,250,.35)}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-links a{font-size:14px;color:rgba(253,252,250,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+    .footer-links a:hover{color:var(--warm-white)}
+
+    /* MOBILE */
+    @media(max-width:960px){
+      nav{padding:0 24px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .page-header{padding:120px 28px 60px}
+      .contact-layout{grid-template-columns:1fr;padding:48px 28px;gap:48px}
+      .contact-info-col{padding-right:0;border-right:none;border-bottom:1px solid rgba(14,30,58,.1);padding-bottom:48px}
+      .contact-form-col{padding-left:0}
+      .visit-inner{grid-template-columns:1fr}
+      .visit-strip{padding:48px 28px}
+      .form-row{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-main">Suffah Grammar School</span>
+    <span class="nav-logo-sub">Quetta, Pakistan</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="index.html#academics">Academics</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta">Apply Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="index.html#programmes">Programmes</a>
+  <a href="index.html#academics">Academics</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="apply.html">Apply Now →</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-accent"></div>
+  <div class="page-header-inner">
+    <span class="section-label">Get in Touch</span>
+    <h1>Contact<br>Suffah Grammar</h1>
+    <p>We'd love to welcome you for a personal tour and conversation. Come see what makes Suffah Grammar different — and find out if we're the right fit for your family.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTACT LAYOUT -->
+<div class="contact-layout">
+  <!-- LEFT: Info -->
+  <div class="contact-info-col">
+
+    <div class="info-block">
+      <h3>Visit Us</h3>
+      <p class="label">Address</p>
+      <p>No. 7, Shalimar Bungalows,<br>Near Block NADRA, Airport Road,<br>Quetta, Balochistan, Pakistan</p>
+    </div>
+
+    <div class="info-block">
+      <h3>Call or WhatsApp</h3>
+      <p class="label">Phone / WhatsApp</p>
+      <a href="tel:+923398877886">+92 339 887 7886</a>
+      <a class="wa-btn" href="https://wa.me/923398877886?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20admissions%20at%20Suffah%20Grammar%20School." target="_blank" rel="noopener">
+        <span class="wa-icon">💬</span> Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="info-block">
+      <h3>Office Hours</h3>
+      <p class="label">Monday – Friday</p>
+      <p>8:00 am – 4:00 pm</p>
+      <p class="label" style="margin-top:10px">Saturday</p>
+      <p>9:00 am – 1:00 pm (By Appointment)</p>
+    </div>
+
+    <div class="map-embed">
+      <!-- Google Maps embed for Airport Road, Quetta -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13700.0!2d67.0099!3d30.1798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ed2e8b5d5b5b5b5%3A0x0!2sAirport%20Road%2C%20Quetta!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Suffah Grammar School location">
+      </iframe>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="contact-form-col">
+    <h2>Send Us a Message</h2>
+    <p>Whether you have a question about admissions, the curriculum, or want to arrange a visit — fill in the form below and we'll be in touch within one working day.</p>
+
+    <form id="contact-form" onsubmit="submitContactForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">Your Name *</label>
+          <input type="text" id="cf-name" required placeholder="e.g. Ahmed Khan"/>
+        </div>
+        <div class="form-group">
+          <label for="cf-phone">Phone / WhatsApp *</label>
+          <input type="tel" id="cf-phone" required placeholder="+92 3XX XXXXXXX"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Email Address</label>
+        <input type="email" id="cf-email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label for="cf-subject">Topic</label>
+        <select id="cf-subject">
+          <option value="">Select a topic…</option>
+          <option>Admissions Enquiry</option>
+          <option>Book a Campus Tour</option>
+          <option>Curriculum Question</option>
+          <option>Fee Structure</option>
+          <option>Career Opportunity</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">Message *</label>
+        <textarea id="cf-message" required placeholder="Tell us how we can help you…"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <div class="form-success" id="form-success">
+        <p>✓ Thank you — your message has been sent. We'll be in touch within one working day.</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- VISIT STRIP -->
+<div class="visit-strip">
+  <div class="visit-inner">
+    <div class="visit-card">
+      <div class="visit-icon">🏫</div>
+      <h4>Campus Tour</h4>
+      <p>We warmly invite prospective families to visit in person. Tours run Monday through Saturday and take approximately 45 minutes.</p>
+      <a href="https://wa.me/923398877886?text=I%20would%20like%20to%20book%20a%20campus%20tour." target="_blank">Book via WhatsApp →</a>
+    </div>
+    <div class="visit-card">
+      <div class="visit-icon">📋</div>
+      <h4>Apply Online</h4>
+      <p>Ready to join the Suffah family? Our online application takes under 10 minutes to complete. Enrollment is open now.</p>
+      <a href="apply.html">Start Application →</a>
+    </div>
+    <div class="visit-card">
+      <div class="visit-icon">🎓</div>
+      <h4>March 2026 Offer</h4>
+      <p>Special fee waivers are available for our earliest applicants. Enquire now to find out if you qualify.</p>
+      <a href="apply.html">Apply Before Deadline →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <div style="font-family:'Cinzel',Georgia,serif;font-size:22px;font-weight:600;color:var(--warm-white);letter-spacing:.06em">Suffah Grammar School</div>
+      <p>&#169; 2025 Suffah Grammar School. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://wa.me/923398877886" target="_blank">WhatsApp</a>
+      <a href="https://www.facebook.com/731927980005603" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/suffahgrammar" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll',()=>{
+    document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
+  });
+  document.getElementById('hamburger').addEventListener('click',()=>{
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  async function submitContactForm(e){
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      // ⚠️  REPLACE "YOUR_FORM_ID" with your Formspree form ID (can be same or different form)
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Website Enquiry — Suffah Grammar School',
+          name: document.getElementById('cf-name').value,
+          phone: document.getElementById('cf-phone').value,
+          email: document.getElementById('cf-email').value || '—',
+          topic: document.getElementById('cf-subject').value || '—',
+          message: document.getElementById('cf-message').value,
+        })
+      });
+      if(!res.ok) throw new Error();
+      document.getElementById('contact-form').style.opacity='0.4';
+      document.getElementById('contact-form').style.pointerEvents='none';
+      document.getElementById('form-success').style.display='block';
+    } catch {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or reach us on WhatsApp.');
+    }
+  }
+</script>
+</body>
+</html>
