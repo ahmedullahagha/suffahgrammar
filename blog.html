@@ -7,17 +7,10 @@
   <link rel="icon" type="image/png" href="images/crest_blue.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"><\/script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#0e1e3a;--blue-mid:#2b5297;--blue:#3a6bbf;
-      --blue-light:#6a9fd4;--blue-faint:#f0f5fc;
-      --cream:#f7f5f0;--warm-white:#fdfcfa;
-      --text-dark:#0e1e3a;--text-mid:#3a4e6b;--text-light:#7a8ea8;
-      --gold:#c8a152;--gold-light:#e6c87a;
-      --trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
-    }
+    :root{--navy:#0e1e3a;--blue-mid:#2b5297;--blue:#3a6bbf;--blue-light:#6a9fd4;--blue-faint:#f0f5fc;--cream:#f7f5f0;--warm-white:#fdfcfa;--text-dark:#0e1e3a;--text-mid:#3a4e6b;--text-light:#7a8ea8;--gold:#c8a152;--gold-light:#e6c87a;--trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;}
     html{scroll-behavior:smooth}
     body{font-family:var(--sans);background:var(--warm-white);color:var(--text-dark);overflow-x:hidden}
     nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:92px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
@@ -62,25 +55,16 @@
     .post-card-body p{font-size:14px;line-height:1.7;color:var(--text-mid);margin-bottom:16px}
     .post-meta{font-size:12px;color:var(--text-light);display:flex;gap:12px;align-items:center}
     .post-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text-light)}
-    .post-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1.2fr 1fr}
-    .post-card.featured .post-card-img{aspect-ratio:unset;min-height:320px}
-    .post-card.featured .post-card-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
-    .post-card.featured h3{font-size:28px}
     .newsletter-card{background:var(--navy);border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;transition:transform .3s;border:1px solid rgba(255,255,255,.06)}
     .newsletter-card:hover{transform:translateY(-4px)}
     .nl-issue{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
     .nl-title{font-family:var(--trajan);font-size:18px;font-weight:500;color:var(--warm-white);line-height:1.3;letter-spacing:.03em}
     .nl-date{font-size:13px;color:rgba(253,252,250,.4)}
     .nl-arrow{font-size:13px;color:var(--gold-light);margin-top:auto;letter-spacing:.08em}
-    .gallery-card{border-radius:3px;overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;aspect-ratio:4/3}
-    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .gallery-card:hover img{transform:scale(1.06)}
-    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,30,58,.85) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
-    .gallery-count{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-    .gallery-title{font-family:var(--trajan);font-size:16px;font-weight:500;color:var(--warm-white);letter-spacing:.04em}
     .empty-state{grid-column:1/-1;text-align:center;padding:80px 0}
     .empty-state h3{font-family:var(--trajan);font-size:22px;color:var(--text-light);margin-bottom:12px;letter-spacing:.04em}
     .empty-state p{font-size:15px;color:var(--text-light);line-height:1.6}
+    .important-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px;font-weight:600;margin-left:8px;vertical-align:middle}
     footer{background:var(--navy);color:var(--warm-white);padding:48px}
     .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
     .footer-logo-text{font-family:var(--trajan);font-size:18px;font-weight:600;color:var(--warm-white);letter-spacing:.06em}
@@ -88,30 +72,13 @@
     .footer-links{display:flex;gap:20px}
     .footer-links a{font-size:13px;color:rgba(253,252,250,.45);text-decoration:none;transition:color .2s}
     .footer-links a:hover{color:var(--warm-white)}
-    @media(max-width:960px){
-      nav{padding:0 24px}
-      .nav-links,.nav-cta{display:none}
-      .hamburger{display:flex}
-      .page-header{padding:120px 28px 60px}
-      .filter-bar{padding:0 24px}
-      .posts-section{padding:48px 24px}
-      .posts-grid{grid-template-columns:1fr}
-      .post-card.featured{grid-template-columns:1fr}
-      .post-card.featured .post-card-img{min-height:220px}
-    }
-    @media(max-width:600px){
-      footer{padding:32px 24px}
-      .footer-bottom{flex-direction:column;align-items:flex-start}
-    }
+    @media(max-width:960px){nav{padding:0 24px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.page-header{padding:120px 28px 60px}.filter-bar{padding:0 24px}.posts-section{padding:48px 24px}.posts-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){footer{padding:32px 24px}.footer-bottom{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
 <body>
-
 <nav id="main-nav">
-  <a class="nav-logo" href="index.html">
-    <span class="nav-logo-main">Suffah Grammar School</span>
-    <span class="nav-logo-sub">Quetta, Pakistan</span>
-  </a>
+  <a class="nav-logo" href="index.html"><span class="nav-logo-main">Suffah Grammar School</span><span class="nav-logo-sub">Quetta, Pakistan</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#programmes">Programmes</a></li>
@@ -125,11 +92,11 @@
 <div class="mobile-menu" id="mobile-menu">
   <a href="index.html">Home</a>
   <a href="index.html#programmes">Programmes</a>
+  <a href="index.html#academics">Academics</a>
   <a href="blog.html">News &amp; Updates</a>
   <a href="contact.html">Contact Us</a>
-  <a href="apply.html">Apply Now →</a>
+  <a href="apply.html">Apply Now &#x2192;</a>
 </div>
-
 <div class="page-header">
   <div class="page-header-accent"></div>
   <div class="page-header-inner">
@@ -138,64 +105,81 @@
     <p>Articles, announcements, photo galleries, and newsletters from Suffah Grammar School.</p>
   </div>
 </div>
-
 <div class="filter-bar">
   <div class="filter-inner">
-    <button class="filter-btn active" onclick="filterPosts('all')">All</button>
-    <button class="filter-btn" onclick="filterPosts('news')">School News</button>
-    <button class="filter-btn" onclick="filterPosts('academic')">Academic</button>
-    <button class="filter-btn" onclick="filterPosts('events')">Events</button>
-    <button class="filter-btn" onclick="filterPosts('gallery')">Galleries</button>
-    <button class="filter-btn" onclick="filterPosts('newsletter')">Newsletters</button>
+    <button class="filter-btn active" data-filter="all" onclick="filterPosts(this,'all')">All</button>
+    <button class="filter-btn" data-filter="announcement" onclick="filterPosts(this,'announcement')">Announcements</button>
+    <button class="filter-btn" data-filter="post" onclick="filterPosts(this,'post')">School News</button>
+    <button class="filter-btn" data-filter="newsletter" onclick="filterPosts(this,'newsletter')">Newsletters</button>
+    <button class="filter-btn" data-filter="gallery" onclick="filterPosts(this,'gallery')">Galleries</button>
   </div>
 </div>
-
 <div class="posts-section">
   <div class="posts-grid" id="posts-grid">
-    <div class="empty-state">
-      <h3>Coming Soon</h3>
-      <p>Articles, galleries, and newsletters will appear here once published.<br>
-      Log in to <a href="/admin" style="color:var(--blue-mid)">the admin panel</a> to write your first post.</p>
-    </div>
+    <div class="empty-state"><h3>Loading…</h3></div>
   </div>
 </div>
-
 <footer>
   <div class="footer-bottom">
     <div>
       <div class="footer-logo-text">Suffah Grammar School</div>
-      <p style="margin-top:6px">© 2025 Suffah Grammar School. All rights reserved.</p>
+      <p style="margin-top:6px">&copy; 2025 Suffah Grammar School. All rights reserved.</p>
     </div>
     <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="apply.html">Apply</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a><a href="apply.html">Apply</a><a href="contact.html">Contact</a>
       <a href="https://www.facebook.com/731927980005603" target="_blank">Facebook</a>
       <a href="https://www.instagram.com/suffahgrammar" target="_blank">Instagram</a>
     </div>
   </div>
 </footer>
-
 <script>
-  window.addEventListener('scroll',()=>{
-    document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
-  });
-  document.getElementById('hamburger').addEventListener('click',()=>{
-    document.getElementById('mobile-menu').classList.toggle('open');
-  });
-  function filterPosts(cat) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+  window.addEventListener('scroll',()=>{document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);});
+  document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('open');});
+  if(window.netlifyIdentity){window.netlifyIdentity.on('init',u=>{if(!u)window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';});});}
+  const API='https://api.github.com/repos/ahmedullahagha/suffahgrammar/contents/';
+  function parseFM(text){
+    const m=text.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
+    if(!m)return{data:{},body:text};
+    const data={};
+    m[1].split('\n').forEach(l=>{const p=l.match(/^([^:]+):\s*(.+)$/);if(p){let k=p[1].trim(),v=p[2].trim().replace(/^['"']|['"']$/g,'');if(v==='true')v=true;else if(v==='false')v=false;data[k]=v;}});
+    return{data,body:m[2].trim()};
   }
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
+  function fmtDate(d){try{return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}catch{return d||'';}}
+  async function fetchFolder(f){try{const r=await fetch(API+f);if(!r.ok)return[];const j=await r.json();return Array.isArray(j)?j.filter(x=>x.name.endsWith('.md')):[]}catch{return[];}}
+  async function fetchParse(url){try{const r=await fetch(url);if(!r.ok)return null;return parseFM(await r.text());}catch{return null;}}
+  async function loadContent(){
+    const grid=document.getElementById('posts-grid');
+    const items=[];
+    for(const f of await fetchFolder('_announcements')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'announcement',...p,date:new Date(p.data.date)});}
+    for(const f of await fetchFolder('_posts')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'post',...p,date:new Date(p.data.date)});}
+    for(const f of await fetchFolder('_newsletters')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'newsletter',...p,date:new Date(p.data.date)});}
+    items.sort((a,b)=>b.date-a.date);
+    if(!items.length){grid.innerHTML='<div class="empty-state"><h3>Coming Soon</h3><p>Content will appear here once published.</p></div>';return;}
+    grid.innerHTML=items.map(it=>{
+      if(it.type==='announcement'){
+        const imp=it.data.important===true||it.data.important==='true';
+        const badge=imp?'<span class="important-badge">Important</span>':'';
+        const type=it.data.type?(it.data.type.charAt(0).toUpperCase()+it.data.type.slice(1)):'Announcement';
+        const prev=it.body.replace(/\n+/g,' ').substring(0,200);
+        return '<div class="post-card" data-category="announcement" style="border-top:3px solid var(--gold)"><div class="post-card-body"><span class="post-tag" style="color:var(--gold)">📢 '+type+'</span><h3 style="font-family:var(--sans);font-size:18px;font-weight:500;margin-bottom:8px">'+it.data.title+badge+'</h3><p>'+prev+(prev.length>=200?'…':'')+'</p><div class="post-meta" style="margin-top:12px"><span>'+fmtDate(it.data.date)+'</span></div></div></div>';
       }
-    });
+      if(it.type==='post'){
+        const prev=(it.data.summary||it.body.replace(/\n+/g,' ')).substring(0,160);
+        const img=it.data.image?'<div class="post-card-img"><img src="'+it.data.image+'" alt=""/></div>':'<div class="post-card-img"><span class="post-card-img-placeholder">SG</span></div>';
+        return '<div class="post-card" data-category="post">'+img+'<div class="post-card-body"><span class="post-tag">'+(it.data.category||'School News')+'</span><h3>'+it.data.title+'</h3><p>'+prev+(prev.length>=160?'…':'')+'</p><div class="post-meta"><span>'+fmtDate(it.data.date)+'</span></div></div></div>';
+      }
+      if(it.type==='newsletter'){
+        return '<div class="newsletter-card" data-category="newsletter"><span class="nl-issue">Newsletter</span><span class="nl-title">'+it.data.title+'</span><span class="nl-date">'+fmtDate(it.data.date)+'</span><span class="nl-arrow">Read more →</span></div>';
+      }
+      return '';
+    }).join('');
   }
-</script>
+  function filterPosts(btn,cat){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#posts-grid [data-category]').forEach(c=>{c.style.display=(cat==='all'||c.dataset.category===cat)?'':'none';});
+  }
+  loadContent();
+<\/script>
 </body>
 </html>
