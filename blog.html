@@ -203,6 +203,9 @@ document.getElementById('posts-grid').addEventListener('click',function(e){
   if(card)openPost(allItems[+card.dataset.index]);
 });
 
+
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+
 function openPost(item){
   if(!item)return;
   const modal=document.getElementById('post-modal');
@@ -213,15 +216,29 @@ function openPost(item){
     '<span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:500;display:block;margin-bottom:14px">'+typeLabel+'</span>'+
     '<h1 style="font-family:var(--trajan);font-size:clamp(22px,4vw,34px);font-weight:400;color:var(--navy);line-height:1.2;margin-bottom:14px;letter-spacing:.03em">'+item.data.title+(imp?' <span class="important-badge">Important</span>':'')+'</h1>'+
     '<p style="font-size:13px;color:var(--text-light);margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid rgba(14,30,58,.08)">'+fmtDate(item.data.date)+'</p>'+
-    mdToHTML(item.body);
+    mdToHTML(item.body)+
+    '<div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(14,30,58,.08)"><button id="share-btn" onclick="sharePost()" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--blue-mid);background:none;border:1px solid var(--blue-mid);padding:10px 22px;border-radius:2px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--blue-mid)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--blue-mid)'">Share</button></div>';
   modal.style.display='block';
   document.body.style.overflow='hidden';
+  history.pushState(null,'',window.location.pathname+'#'+slugify(item.data.title));
 }
+
 
 function closePost(){
   document.getElementById('post-modal').style.display='none';
   document.body.style.overflow='';
+  history.pushState(null,'',window.location.pathname);
 }
+
+function sharePost(){
+  const url=window.location.href;
+  navigator.clipboard.writeText(url).then(()=>{
+    const btn=document.getElementById('share-btn');
+    btn.textContent='✓ Copied!';
+    setTimeout(()=>{btn.textContent='Share';},2000);
+  });
+}
+
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePost();});
 
@@ -231,7 +248,13 @@ function filterPosts(btn,cat){
   document.querySelectorAll('#posts-grid [data-category]').forEach(c=>{c.style.display=(cat==='all'||c.dataset.category===cat)?'':'none';});
 }
 
-loadContent();
+loadContent().then(()=>{
+  const hash=decodeURIComponent(window.location.hash.slice(1));
+  if(hash&&allItems.length){
+    const match=allItems.find(it=>slugify(it.data.title)===hash);
+    if(match)openPost(match);
+  }
+});
 </script>
 </body>
 </html>
