@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News &amp; Updates | Suffah Grammar School</title>
+  <link rel="icon" type="image/png" href="images/crest_blue.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0e1e3a;--blue-mid:#2b5297;--blue:#3a6bbf;
+      --blue-light:#6a9fd4;--blue-faint:#f0f5fc;
+      --cream:#f7f5f0;--warm-white:#fdfcfa;
+      --text-dark:#0e1e3a;--text-mid:#3a4e6b;--text-light:#7a8ea8;
+      --gold:#c8a152;--gold-light:#e6c87a;
+      --trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--warm-white);color:var(--text-dark);overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:92px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 4px 32px rgba(14,30,58,.5)}
+    .nav-logo{display:flex;align-items:center;text-decoration:none;flex-direction:column;justify-content:center}
+    .nav-logo-main{font-family:var(--trajan);font-size:26px;font-weight:600;color:var(--warm-white);letter-spacing:.06em;line-height:1.2}
+    .nav-logo-sub{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-light);margin-top:4px}
+    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+    .nav-links a{font-size:14px;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:rgba(253,252,250,.7);text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--warm-white)}
+    .nav-cta{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:12px 26px;border-radius:2px;text-decoration:none;transition:background .2s;white-space:nowrap}
+    .nav-cta:hover{background:var(--gold-light)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--warm-white)}
+    .mobile-menu{display:none;position:fixed;top:92px;left:0;right:0;z-index:199;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:24px 32px;flex-direction:column}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(253,252,250,.75);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+    .mobile-menu a:last-child{border-bottom:none;margin-top:16px;color:var(--gold)}
+    .page-header{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden}
+    .page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(106,159,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(106,159,212,.04) 1px,transparent 1px);background-size:54px 54px}
+    .page-header-accent{position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(58,107,191,.15) 0%,transparent 70%);pointer-events:none}
+    .page-header-inner{max-width:700px;position:relative;z-index:2}
+    .section-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:18px;display:block}
+    .page-header h1{font-family:var(--trajan);font-size:clamp(28px,5vw,56px);font-weight:400;color:var(--warm-white);margin-bottom:16px;letter-spacing:.03em;line-height:1.15}
+    .page-header p{font-size:17px;line-height:1.75;color:rgba(253,252,250,.65);max-width:520px}
+    .filter-bar{background:var(--blue-faint);padding:0 48px;border-bottom:1px solid rgba(14,30,58,.08)}
+    .filter-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+    .filter-btn{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:18px 24px;cursor:pointer;color:var(--text-light);border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+    .filter-btn:hover{color:var(--blue-mid)}
+    .filter-btn.active{color:var(--blue-mid);border-bottom-color:var(--blue-mid)}
+    .posts-section{padding:72px 48px;max-width:1100px;margin:0 auto}
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+    .post-card{background:var(--warm-white);border-radius:3px;overflow:hidden;border:1px solid rgba(14,30,58,.07);transition:transform .3s,box-shadow .3s;cursor:pointer;text-decoration:none;display:block;color:inherit}
+    .post-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,30,58,.1)}
+    .post-card-img{aspect-ratio:16/10;overflow:hidden;background:var(--blue-faint);display:flex;align-items:center;justify-content:center}
+    .post-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .post-card:hover .post-card-img img{transform:scale(1.05)}
+    .post-card-img-placeholder{font-family:var(--trajan);font-size:32px;color:var(--blue-light);opacity:.3}
+    .post-card-body{padding:24px}
+    .post-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:500;margin-bottom:10px;display:block}
+    .post-card-body h3{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--navy);line-height:1.35;margin-bottom:10px}
+    .post-card-body p{font-size:14px;line-height:1.7;color:var(--text-mid);margin-bottom:16px}
+    .post-meta{font-size:12px;color:var(--text-light);display:flex;gap:12px;align-items:center}
+    .post-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text-light)}
+    .post-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1.2fr 1fr}
+    .post-card.featured .post-card-img{aspect-ratio:unset;min-height:320px}
+    .post-card.featured .post-card-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
+    .post-card.featured h3{font-size:28px}
+    .newsletter-card{background:var(--navy);border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;transition:transform .3s;border:1px solid rgba(255,255,255,.06)}
+    .newsletter-card:hover{transform:translateY(-4px)}
+    .nl-issue{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
+    .nl-title{font-family:var(--trajan);font-size:18px;font-weight:500;color:var(--warm-white);line-height:1.3;letter-spacing:.03em}
+    .nl-date{font-size:13px;color:rgba(253,252,250,.4)}
+    .nl-arrow{font-size:13px;color:var(--gold-light);margin-top:auto;letter-spacing:.08em}
+    .gallery-card{border-radius:3px;overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;aspect-ratio:4/3}
+    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .gallery-card:hover img{transform:scale(1.06)}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,30,58,.85) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+    .gallery-count{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .gallery-title{font-family:var(--trajan);font-size:16px;font-weight:500;color:var(--warm-white);letter-spacing:.04em}
+    .empty-state{grid-column:1/-1;text-align:center;padding:80px 0}
+    .empty-state h3{font-family:var(--trajan);font-size:22px;color:var(--text-light);margin-bottom:12px;letter-spacing:.04em}
+    .empty-state p{font-size:15px;color:var(--text-light);line-height:1.6}
+    footer{background:var(--navy);color:var(--warm-white);padding:48px}
+    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-logo-text{font-family:var(--trajan);font-size:18px;font-weight:600;color:var(--warm-white);letter-spacing:.06em}
+    .footer-bottom p{font-size:13px;color:rgba(253,252,250,.3)}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:13px;color:rgba(253,252,250,.45);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--warm-white)}
+    @media(max-width:960px){
+      nav{padding:0 24px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .page-header{padding:120px 28px 60px}
+      .filter-bar{padding:0 24px}
+      .posts-section{padding:48px 24px}
+      .posts-grid{grid-template-columns:1fr}
+      .post-card.featured{grid-template-columns:1fr}
+      .post-card.featured .post-card-img{min-height:220px}
+    }
+    @media(max-width:600px){
+      footer{padding:32px 24px}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-main">Suffah Grammar School</span>
+    <span class="nav-logo-sub">Quetta, Pakistan</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="index.html#academics">Academics</a></li>
+    <li><a href="blog.html" class="active">News</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="apply.html" class="nav-cta">Apply Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="index.html#programmes">Programmes</a>
+  <a href="blog.html">News &amp; Updates</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="apply.html">Apply Now →</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-accent"></div>
+  <div class="page-header-inner">
+    <span class="section-label" style="color:var(--gold)">From the School</span>
+    <h1>News &amp;<br>Updates</h1>
+    <p>Articles, announcements, photo galleries, and newsletters from Suffah Grammar School.</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+    <button class="filter-btn" onclick="filterPosts('news')">School News</button>
+    <button class="filter-btn" onclick="filterPosts('academic')">Academic</button>
+    <button class="filter-btn" onclick="filterPosts('events')">Events</button>
+    <button class="filter-btn" onclick="filterPosts('gallery')">Galleries</button>
+    <button class="filter-btn" onclick="filterPosts('newsletter')">Newsletters</button>
+  </div>
+</div>
+
+<div class="posts-section">
+  <div class="posts-grid" id="posts-grid">
+    <div class="empty-state">
+      <h3>Coming Soon</h3>
+      <p>Articles, galleries, and newsletters will appear here once published.<br>
+      Log in to <a href="/admin" style="color:var(--blue-mid)">the admin panel</a> to write your first post.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div>
+      <div class="footer-logo-text">Suffah Grammar School</div>
+      <p style="margin-top:6px">© 2025 Suffah Grammar School. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.facebook.com/731927980005603" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/suffahgrammar" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll',()=>{
+    document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
+  });
+  document.getElementById('hamburger').addEventListener('click',()=>{
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  function filterPosts(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>
