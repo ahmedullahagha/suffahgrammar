@@ -1,14 +1,11 @@
 backend:
-  name: github
-  repo: ahmedullahagha/suffahgrammar
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://superlative-muffin-b0fa4d.netlify.app
+site_url: https://suffahgrammar.com
 display_url: https://suffahgrammar.com
 logo_url: https://suffahgrammar.com/images/crest_blue.png
 
