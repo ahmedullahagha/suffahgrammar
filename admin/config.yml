@@ -8,7 +8,7 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://suffahgrammar.com
+site_url: https://superlative-muffin-b0fa4d.netlify.app
 display_url: https://suffahgrammar.com
 logo_url: https://suffahgrammar.com/images/crest_blue.png
 
