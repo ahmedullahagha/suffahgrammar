@@ -140,121 +140,49 @@
   </div>
 </footer>
 <script>
-window.addEventListener('scroll',()=>{document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);});
-document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('open');});
-if(window.netlifyIdentity){window.netlifyIdentity.on('init',u=>{if(!u)window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';});});}
-
-const API='https://api.github.com/repos/ahmedullahagha/suffahgrammar/contents/';
+window.addEventListener("scroll",()=>{document.getElementById("main-nav").classList.toggle("scrolled",window.scrollY>40);});
+document.getElementById("hamburger").addEventListener("click",()=>{document.getElementById("mobile-menu").classList.toggle("open");});
+if(window.netlifyIdentity){window.netlifyIdentity.on("init",u=>{if(!u)window.netlifyIdentity.on("login",()=>{document.location.href="/admin/";});});}
+const API="https://api.github.com/repos/ahmedullahagha/suffahgrammar/contents/";
 let allItems=[];
-
-function parseFM(text){
-  const m=text.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
-  if(!m)return{data:{},body:text};
-  const data={};
-  m[1].split('\n').forEach(l=>{const p=l.match(/^([^:]+):\s*(.+)$/);if(p){let k=p[1].trim(),v=p[2].trim().replace(/^['""]|['""]$/g,'');if(v==='true')v=true;else if(v==='false')v=false;data[k]=v;}});
-  return{data,body:m[2].trim()};
-}
-
-function fmtDate(d){try{return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}catch{return d||'';}}
-
-function mdToHTML(md){
-  return md.split(/\n\n+/).map(block=>{
-    if(/^##\s/.test(block))return '<h2 style="font-family:var(--trajan);font-size:20px;font-weight:400;color:var(--navy);margin:28px 0 10px;letter-spacing:.03em">'+block.replace(/^##\s/,'')+'</h2>';
-    if(/^#\s/.test(block))return '<h1 style="font-family:var(--trajan);font-size:28px;font-weight:400;color:var(--navy);margin:0 0 16px;letter-spacing:.03em">'+block.replace(/^#\s/,'')+'</h1>';
-    const html=block.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
-    return '<p style="font-size:16px;line-height:1.85;color:var(--text-mid);margin-bottom:18px">'+html+'</p>';
-  }).join('');
-}
-
-async function fetchFolder(f){try{const r=await fetch(API+f);if(!r.ok)return[];const j=await r.json();return Array.isArray(j)?j.filter(x=>x.name.endsWith('.md')):[]}catch{return[];}}
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+function parseFM(t){const m=t.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);if(!m)return{data:{},body:t};const d={};m[1].split("\n").forEach(l=>{const p=l.match(/^([^:]+):\s*(.+)$/);if(p){let k=p[1].trim(),v=p[2].trim().replace(/^[\x22\x27]|[\x22\x27]$/g,"");if(v==="true")v=true;else if(v==="false")v=false;d[k]=v;}});return{data:d,body:m[2].trim()};}
+function fmtDate(d){try{return new Date(d).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});}catch{return d||"";}}
+function mdToHTML(md){return md.split(/\n\n+/).map(b=>{if(/^##\s/.test(b))return "<h2 style=\"font-family:var(--trajan);font-size:20px;font-weight:400;color:var(--navy);margin:28px 0 10px\">"+b.replace(/^##\s/,"")+"</h2>";if(/^#\s/.test(b))return "<h1 style=\"font-family:var(--trajan);font-size:26px;font-weight:400;color:var(--navy);margin:0 0 14px\">"+b.replace(/^#\s/,"")+"</h1>";return"<p style=\"font-size:16px;line-height:1.85;color:var(--text-mid);margin-bottom:18px\">"+b.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,"<em>$1</em>")+"</p>";}).join("");}
+async function fetchFolder(f){try{const r=await fetch(API+f);if(!r.ok)return[];const j=await r.json();return Array.isArray(j)?j.filter(x=>x.name.endsWith(".md")):[]}catch{return[];}}
 async function fetchParse(url){try{const r=await fetch(url);if(!r.ok)return null;return parseFM(await r.text());}catch{return null;}}
-
-async function loadContent(){
-  const grid=document.getElementById('posts-grid');
-  const items=[];
-  for(const f of await fetchFolder('_announcements')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'announcement',...p,date:new Date(p.data.date)});}
-  for(const f of await fetchFolder('_posts')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'post',...p,date:new Date(p.data.date)});}
-  for(const f of await fetchFolder('_newsletters')){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:'newsletter',...p,date:new Date(p.data.date)});}
-  items.sort((a,b)=>b.date-a.date);
-  allItems=items;
-  if(!items.length){grid.innerHTML='<div class="empty-state"><h3>Coming Soon</h3><p>Content will appear here once published.</p></div>';return;}
+async function loadContent(){const grid=document.getElementById("posts-grid");const items=[];
+  for(const f of await fetchFolder("_announcements")){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:"announcement",...p,date:new Date(p.data.date)});}
+  for(const f of await fetchFolder("_posts")){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:"post",...p,date:new Date(p.data.date)});}
+  for(const f of await fetchFolder("_newsletters")){const p=await fetchParse(f.download_url);if(p&&p.data.published!==false)items.push({type:"newsletter",...p,date:new Date(p.data.date)});}
+  items.sort((a,b)=>b.date-a.date);allItems=items;
+  if(!items.length){grid.innerHTML="<div class=\"empty-state\"><h3>Coming Soon</h3><p>Content will appear here once published.</p></div>";return;}
   grid.innerHTML=items.map((it,idx)=>{
-    if(it.type==='announcement'){
-      const imp=it.data.important===true||it.data.important==='true';
-      const badge=imp?'<span class="important-badge">Important</span>':'';
-      const type=it.data.type?(it.data.type.charAt(0).toUpperCase()+it.data.type.slice(1)):'Announcement';
-      const prev=it.body.replace(/\n+/g,' ').substring(0,200);
-      return '<div class="post-card" data-category="announcement" data-index="'+idx+'" style="border-top:3px solid var(--gold);cursor:pointer"><div class="post-card-body"><span class="post-tag" style="color:var(--gold)">📢 '+type+'</span><h3 style="font-family:var(--sans);font-size:18px;font-weight:500;margin-bottom:8px">'+it.data.title+badge+'</h3><p>'+prev+(prev.length>=200?'…':'')+'</p><div class="post-meta" style="margin-top:12px"><span>'+fmtDate(it.data.date)+'</span></div></div></div>';
-    }
-    if(it.type==='post'){
-      const prev=(it.data.summary||it.body.replace(/\n+/g,' ')).substring(0,160);
-      const img=it.data.image?'<div class="post-card-img"><img src="'+it.data.image+'" alt=""/></div>':'<div class="post-card-img"><span class="post-card-img-placeholder">SG</span></div>';
-      return '<div class="post-card" data-category="post" data-index="'+idx+'" style="cursor:pointer">'+img+'<div class="post-card-body"><span class="post-tag">'+(it.data.category||'School News')+'</span><h3>'+it.data.title+'</h3><p>'+prev+(prev.length>=160?'…':'')+'</p><div class="post-meta"><span>'+fmtDate(it.data.date)+'</span></div></div></div>';
-    }
-    if(it.type==='newsletter'){
-      return '<div class="newsletter-card" data-category="newsletter" data-index="'+idx+'" style="cursor:pointer"><span class="nl-issue">Newsletter</span><span class="nl-title">'+it.data.title+'</span><span class="nl-date">'+fmtDate(it.data.date)+'</span><span class="nl-arrow">Read more →</span></div>';
-    }
-    return '';
-  }).join('');
+    if(it.type==="announcement"){const imp=it.data.important===true||it.data.important==="true";const badge=imp?"<span class=\"important-badge\">Important</span>":"";const type=it.data.type?(it.data.type.charAt(0).toUpperCase()+it.data.type.slice(1)):"Announcement";const prev=it.body.replace(/\n+/g," ").substring(0,200);return"<div class=\"post-card\" data-category=\"announcement\" data-index=\""+idx+"\" style=\"border-top:3px solid var(--gold);cursor:pointer\"><div class=\"post-card-body\"><span class=\"post-tag\" style=\"color:var(--gold)\">&#x1F4E2; "+type+"</span><h3 style=\"font-family:var(--sans);font-size:18px;font-weight:500;margin-bottom:8px\">"+it.data.title+badge+"</h3><p>"+prev+(prev.length>=200?"&hellip;":"")+"</p><div class=\"post-meta\" style=\"margin-top:12px\"><span>"+fmtDate(it.data.date)+"</span></div></div></div>";}
+    if(it.type==="post"){const prev=(it.data.summary||it.body.replace(/\n+/g," ")).substring(0,160);const img=it.data.image?"<div class=\"post-card-img\"><img src=\""+it.data.image+"\" alt=\"\"></div>":"<div class=\"post-card-img\"><span class=\"post-card-img-placeholder\">SG</span></div>";return"<div class=\"post-card\" data-category=\"post\" data-index=\""+idx+"\" style=\"cursor:pointer\">"+img+"<div class=\"post-card-body\"><span class=\"post-tag\">"+(it.data.category||"School News")+"</span><h3>"+it.data.title+"</h3><p>"+prev+(prev.length>=160?"&hellip;":"")+"</p><div class=\"post-meta\"><span>"+fmtDate(it.data.date)+"</span></div></div></div>";}
+    if(it.type==="newsletter"){return"<div class=\"newsletter-card\" data-category=\"newsletter\" data-index=\""+idx+"\" style=\"cursor:pointer\"><span class=\"nl-issue\">Newsletter</span><span class=\"nl-title\">"+it.data.title+"</span><span class=\"nl-date\">"+fmtDate(it.data.date)+"</span><span class=\"nl-arrow\">Read more &rarr;</span></div>";}
+    return"";
+  }).join("");
 }
-
-document.getElementById('posts-grid').addEventListener('click',function(e){
-  const card=e.target.closest('[data-index]');
-  if(card)openPost(allItems[+card.dataset.index]);
-});
-
-
-function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
-
-function openPost(item){
-  if(!item)return;
-  const modal=document.getElementById('post-modal');
-  const content=document.getElementById('post-modal-content');
-  const typeLabel=item.type==='announcement'?(item.data.type?item.data.type.charAt(0).toUpperCase()+item.data.type.slice(1):'Announcement'):(item.data.category||'School News');
-  const imp=item.data.important===true||item.data.important==='true';
-  content.innerHTML=
-    '<span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:500;display:block;margin-bottom:14px">'+typeLabel+'</span>'+
-    '<h1 style="font-family:var(--trajan);font-size:clamp(22px,4vw,34px);font-weight:400;color:var(--navy);line-height:1.2;margin-bottom:14px;letter-spacing:.03em">'+item.data.title+(imp?' <span class="important-badge">Important</span>':'')+'</h1>'+
-    '<p style="font-size:13px;color:var(--text-light);margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid rgba(14,30,58,.08)">'+fmtDate(item.data.date)+'</p>'+
-    mdToHTML(item.body)+
-    '<div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(14,30,58,.08)"><button id="share-btn" onclick="sharePost()" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--blue-mid);background:none;border:1px solid var(--blue-mid);padding:10px 22px;border-radius:2px;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--blue-mid)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--blue-mid)'">Share</button></div>';
-  modal.style.display='block';
-  document.body.style.overflow='hidden';
-  history.pushState(null,'',window.location.pathname+'#'+slugify(item.data.title));
+document.getElementById("posts-grid").addEventListener("click",function(e){const card=e.target.closest("[data-index]");if(card)openPost(allItems[+card.dataset.index]);});
+function openPost(item){if(!item)return;
+  const modal=document.getElementById("post-modal");
+  const content=document.getElementById("post-modal-content");
+  const tl=item.type==="announcement"?(item.data.type?item.data.type.charAt(0).toUpperCase()+item.data.type.slice(1):"Announcement"):(item.data.category||"School News");
+  const imp=item.data.important===true||item.data.important==="true";
+  const shareBtn="<div style=\"margin-top:40px;padding-top:24px;border-top:1px solid rgba(14,30,58,.08)\"><button id=\"share-btn\" onclick=\"sharePost()\" style=\"font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--blue-mid);background:none;border:1px solid var(--blue-mid);padding:10px 24px;border-radius:2px;cursor:pointer\">Share link</button></div>";
+  content.innerHTML="<span style=\"font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:500;display:block;margin-bottom:14px\">"+tl+"</span>"
+    +"<h1 style=\"font-family:var(--trajan);font-size:clamp(22px,4vw,34px);font-weight:400;color:var(--navy);line-height:1.2;margin-bottom:14px;letter-spacing:.03em\">"+item.data.title+(imp?" <span class=\"important-badge\">Important</span>":"")+"</h1>"
+    +"<p style=\"font-size:13px;color:var(--text-light);margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid rgba(14,30,58,.08)\">"+fmtDate(item.data.date)+"</p>"
+    +mdToHTML(item.body)+shareBtn;
+  modal.style.display="block";document.body.style.overflow="hidden";
+  history.pushState(null,"",window.location.pathname+"#"+slugify(item.data.title));
 }
-
-
-function closePost(){
-  document.getElementById('post-modal').style.display='none';
-  document.body.style.overflow='';
-  history.pushState(null,'',window.location.pathname);
-}
-
-function sharePost(){
-  const url=window.location.href;
-  navigator.clipboard.writeText(url).then(()=>{
-    const btn=document.getElementById('share-btn');
-    btn.textContent='✓ Copied!';
-    setTimeout(()=>{btn.textContent='Share';},2000);
-  });
-}
-
-
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePost();});
-
-function filterPosts(btn,cat){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#posts-grid [data-category]').forEach(c=>{c.style.display=(cat==='all'||c.dataset.category===cat)?'':'none';});
-}
-
-loadContent().then(()=>{
-  const hash=decodeURIComponent(window.location.hash.slice(1));
-  if(hash&&allItems.length){
-    const match=allItems.find(it=>slugify(it.data.title)===hash);
-    if(match)openPost(match);
-  }
-});
+function closePost(){document.getElementById("post-modal").style.display="none";document.body.style.overflow="";history.pushState(null,"",window.location.pathname);}
+function sharePost(){navigator.clipboard.writeText(window.location.href).then(()=>{const btn=document.getElementById("share-btn");btn.textContent="Copied!";setTimeout(()=>{btn.textContent="Share link";},2000);});}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePost();});
+function filterPosts(btn,cat){document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll("#posts-grid [data-category]").forEach(c=>{c.style.display=(cat==="all"||c.dataset.category===cat)?"":"none";});}
+loadContent().then(()=>{const hash=decodeURIComponent(window.location.hash.slice(1));if(hash&&allItems.length){const match=allItems.find(it=>slugify(it.data.title)===hash);if(match)openPost(match);}});
 </script>
 </body>
 </html>
