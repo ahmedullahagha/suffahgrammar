@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — English for O' Levels | Suffah Grammar School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0C1E38;
+    --navy2: #132849;
+    --gold: #D9A227;
+    --bg: #F4F2ED;
+    --white: #ffffff;
+    --text: #0C1E38;
+    --muted: #6B7E96;
+    --border: #DDD8CE;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: 'FREE';
+    position: absolute;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 300px;
+    color: rgba(217,162,39,0.045);
+    right: -10px;
+    top: -40px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .header-rule {
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .header-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 44px 24px 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .school-name {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .course-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: clamp(48px, 9vw, 68px);
+    line-height: 0.92;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+  }
+
+  .course-title span {
+    color: var(--gold);
+  }
+
+  .header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .tag-gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .tag-outline {
+    border: 1px solid rgba(217,162,39,0.35);
+    color: rgba(255,255,255,0.65);
+  }
+
+  .header-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    max-width: 440px;
+  }
+
+  /* INFO BAR */
+  .info-bar {
+    background: var(--navy2);
+    border-top: 1px solid rgba(217,162,39,0.15);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .info-bar-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  .chip {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .chip::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* MAIN */
+  main {
+    flex: 1;
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px 72px;
+  }
+
+  .form-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  /* FORM */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  label .opt {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  input, select, textarea {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7E96' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+    cursor: pointer;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 96px;
+    line-height: 1.55;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(217,162,39,0.13);
+  }
+
+  input::placeholder, textarea::placeholder { color: #BBC6D0; }
+
+  /* DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0 2px;
+  }
+
+  .section-divider span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SUBMIT */
+  .submit-btn {
+    margin-top: 6px;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 17px 24px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .submit-btn:hover { background: var(--navy2); }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+  .spinner {
+    width: 17px; height: 17px;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+
+  .submit-btn.loading .btn-text { display: none; }
+  .submit-btn.loading .spinner { display: block; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  /* SUCCESS */
+  #success {
+    display: none;
+    text-align: center;
+    padding: 56px 24px;
+  }
+
+  .success-circle {
+    width: 68px; height: 68px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+  }
+
+  .success-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 42px;
+    color: var(--navy);
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+
+  .success-msg {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+
+  .success-wa {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  footer span {
+    color: var(--gold);
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-rule"></div>
+  <div class="header-inner">
+    <span class="school-name">Suffah Grammar School</span>
+    <div class="course-title">English for <span>O' Levels</span></div>
+    <div class="header-tags">
+      <span class="tag tag-gold">First Month Free</span>
+      <span class="tag tag-outline">Grade 8 &amp; Above</span>
+      <span class="tag tag-outline">In-Person</span>
+    </div>
+    <p class="header-desc">
+      Close your learning gaps before they cost you grades. Expert-led sessions covering grammar, writing, reading, speaking, and exam strategy — your first month, on us.
+    </p>
+  </div>
+</header>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="chip">Grammar &amp; Writing</div>
+    <div class="chip">Reading &amp; Comprehension</div>
+    <div class="chip">Speaking &amp; Listening</div>
+    <div class="chip">Exam Strategy</div>
+    <div class="chip">4 Sessions / Week</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="form-heading">Application Form</div>
+
+  <!-- FORM -->
+  <form id="appForm" action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Web3Forms config — replace YOUR_ACCESS_KEY with key from web3forms.com -->
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+    <input type="hidden" name="subject" value="New Application — English for O' Levels">
+    <input type="hidden" name="from_name" value="Suffah Grammar School Application">
+    <input type="checkbox" name="botcheck" style="display:none">
+
+    <!-- Student info -->
+    <div class="section-divider"><span>Student</span></div>
+
+    <div class="row">
+      <div class="field">
+        <label for="student_name">Student Name <span style="color:var(--gold)">*</span></label>
+        <input type="text" id="student_name" name="student_name" placeholder="Full name" required>
+      </div>
+      <div class="field">
+        <label for="grade">Current Grade <span style="color:var(--gold)">*</span></label>
+        <select id="grade" name="grade" required>
+          <option value="" disabled selected>Select grade</option>
+          <option>Grade 8</option>
+          <option>Grade 9</option>
+          <option>Grade 10</option>
+          <option>Grade 11</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="current_school">Current School <span style="color:var(--gold)">*</span></label>
+      <input type="text" id="current_school" name="current_school" placeholder="School name" required>
+    </div>
+
+    <!-- Parent info -->
+    <div class="section-divider"><span>Parent / Guardian</span></div>
+
+    <div class="row">
+      <div class="field">
+        <label for="parent_name">Parent / Guardian Name <span style="color:var(--gold)">*</span></label>
+        <input type="text" id="parent_name" name="parent_name" placeholder="Full name" required>
+      </div>
+      <div class="field">
+        <label for="whatsapp">WhatsApp Number <span style="color:var(--gold)">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="03XX XXXXXXX" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="email">Email Address <span class="opt">(optional)</span></label>
+      <input type="email" id="email" name="email" placeholder="parent@email.com">
+    </div>
+
+    <!-- Goals -->
+    <div class="section-divider"><span>A little more</span></div>
+
+    <div class="field">
+      <label for="goals">Areas you'd like to improve <span class="opt">(optional)</span></label>
+      <textarea id="goals" name="goals" placeholder="e.g. essay writing, grammar, speaking confidence, exam technique…"></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="submit-btn" id="submitBtn">
+      <span class="btn-text">Submit Application &rarr;</span>
+      <div class="spinner"></div>
+    </button>
+
+    <p class="note">We'll be in touch on WhatsApp within 24 hours to confirm your spot.</p>
+  </form>
+
+  <!-- SUCCESS -->
+  <div id="success">
+    <div class="success-circle">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9A227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="success-title">Application Received</div>
+    <p class="success-msg">
+      Thank you! We've received your application for <strong>English for O' Levels</strong>. Ahmedullah Agha will be in touch on WhatsApp within 24 hours to confirm your spot.
+    </p>
+    <a class="success-wa" href="https://wa.me/923398877886">
+      Message us on WhatsApp
+    </a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>Taught by <span>Ahmedullah Agha</span> &nbsp;·&nbsp; Suffah Grammar School, Quetta &nbsp;·&nbsp; 0339 8877886</p>
+</footer>
+
+<script>
+  const form = document.getElementById('appForm');
+  const btn  = document.getElementById('submitBtn');
+  const successBox = document.getElementById('success');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.classList.add('loading');
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        document.querySelector('.form-heading').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Something went wrong. Please try again or contact us on WhatsApp.');
+        btn.disabled = false;
+        btn.classList.remove('loading');
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  });
+</script>
+</body>
+</html>
