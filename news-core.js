@@ -52,7 +52,7 @@
       if(inCode){code.push(line);continue;}
       if(!line.trim()){flush();endList();continue;}
       const h=line.match(/^(#{1,6})\s+(.+)/),li=line.match(/^\s*(?:([-*+])|\d+\.)\s+(.+)/);
-      if(h){flush();endList();const n=Math.min(h[1].length+1,6);html+=`<h${n}>${inline(h[2])}</h${n}>`;}
+      if(h){flush();endList();const n=Math.max(2,Math.min(h[1].length,6));html+=`<h${n}>${inline(h[2])}</h${n}>`;}
       else if(li){flush();const t=li[1]?'ul':'ol';if(list!==t){endList();list=t;html+=`<${t}>`;}html+='<li>'+inline(li[2])+'</li>';}
       else if(/^>\s?/.test(line)){flush();endList();html+='<blockquote><p>'+inline(line.replace(/^>\s?/,''))+'</p></blockquote>';}
       else if(/^---+$/.test(line)){flush();endList();html+='<hr>';}
