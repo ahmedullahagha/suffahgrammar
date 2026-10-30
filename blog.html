@@ -4,7 +4,9 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>News &amp; Updates | Suffah Grammar School</title>
-  <link rel="icon" type="image/png" href="images/crest_blue.png"/>
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -105,33 +107,18 @@
       .footer-bottom{flex-direction:column;align-items:flex-start}
     }
   </style>
+<link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
 </head>
-<body>
+<body class="legacy-page">
 
-<nav id="main-nav">
-  <a class="nav-logo" href="index.html">
-    <span class="nav-logo-main">Suffah Grammar School</span>
-    <span class="nav-logo-sub">Quetta, Pakistan</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#programmes">Programmes</a></li>
-    <li><a href="index.html#academics">Academics</a></li>
-    <li><a href="blog.html" class="active">News</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <a href="apply.html" class="nav-cta">Apply Now</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="index.html#programmes">Programmes</a>
-  <a href="index.html#academics">Academics</a>
-  <a href="blog.html">News &amp; Updates</a>
-  <a href="contact.html">Contact Us</a>
-  <a href="apply.html">Apply Now &rarr;</a>
-</div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap"><span>Suffah Grammar School</span><span>Quetta, Pakistan</span></div></div>
+<header class="wrap">
+<a href="index.html#home" class="brand" aria-label="Suffah Grammar School home"><img src="assets/crest.webp" width="160" height="78" alt="Suffah Grammar School"></a>
+<button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
+<nav id="navigation" aria-label="Main navigation"><a href="index.html#about">Our school</a><a href="index.html#digital">Digital learning</a><a href="index.html#pathway">Cambridge pathway</a><a href="blog.html">News</a><a href="contact.html">Contact</a><a class="button small" href="apply.html">Apply now <span aria-hidden="true">↗</span></a></nav>
+</header><main id="main">
 
 <div class="page-header">
   <div class="page-header-accent"></div>
@@ -165,25 +152,9 @@
   </div>
 </div>
 
-<footer>
-  <div class="footer-bottom">
-    <div>
-      <div class="footer-logo-text">Suffah Grammar School</div>
-      <p style="margin-top:6px">&copy; 2025 Suffah Grammar School. All rights reserved.</p>
-    </div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="apply.html">Apply</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://www.facebook.com/731927980005603" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/suffahgrammar" target="_blank">Instagram</a>
-    </div>
-  </div>
-</footer>
+</main><footer><div class="wrap footer-inner"><span>Suffah Grammar School</span><p>Lifelong learning starts here.</p><a href="index.html#home">Home ↑</a></div><div class="wrap footer-socials" aria-label="Follow Suffah Grammar School"><a href="https://www.facebook.com/731927980005603" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/suffahgrammar" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="apply.html">Apply now</a><a href="contact.html">Contact</a><a href="tel:+923398877886">+92 339 887 7886</a></div><div class="wrap copyright">© <span id="year">2026</span> Suffah Grammar School</div></footer>
 
 <script>
-window.addEventListener('scroll',()=>{document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);});
-document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.toggle('open');});
 if(window.netlifyIdentity){window.netlifyIdentity.on('init',u=>{if(!u)window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';});});}
 
 const API='https://api.github.com/repos/ahmedullahagha/suffahgrammar/contents/';
@@ -339,3 +310,4 @@ loadContent().then(()=>{
 </script>
 </body>
 </html>
+

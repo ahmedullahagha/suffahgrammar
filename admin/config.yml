@@ -7,9 +7,9 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://suffahgrammar.com
-display_url: https://suffahgrammar.com
-logo_url: https://suffahgrammar.com/images/crest_blue.png
+site_url: https://www.suffahgrammar.com
+display_url: https://www.suffahgrammar.com
+logo_url: https://www.suffahgrammar.com/assets/crest.webp
 
 collections:
 
@@ -114,3 +114,4 @@ collections:
       - { label: "Message", name: "body", widget: "markdown" }
       - { label: "Important?", name: "important", widget: "boolean", default: false, hint: "Marks this announcement as high priority" }
       - { label: "Published", name: "published", widget: "boolean", default: true }
+

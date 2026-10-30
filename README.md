@@ -28,3 +28,8 @@ Google Maps: https://maps.app.goo.gl/nrNajizDr9tdLnMu7
 The embedded map matches the school listing at 30.2402944, 66.9877105.
 
 The visual direction takes inspiration from Oak National Academy’s Who We Are page. Illustrations and implementation are original; copy is specific to Suffah. Cambridge pathway describes progression towards O Levels and IGCSEs, not accreditation.
+
+
+## Enquiries and retained pages
+
+The homepage links to apply.html, contact.html and blog.html. All share styles.css, script.js, the school crest and favicon assets. contact.html uses contact.js to open an email draft; it does not claim server-side delivery. Admissions retain the existing Formspree endpoint. Email delivery and the Formspree account must be checked by the school. No WhatsApp service is advertised on the main school pages until account access is confirmed. Admissions use relative start-term choices to avoid expired dates.
