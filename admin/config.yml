@@ -20,7 +20,7 @@ collections:
     folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "blog/{{slug}}"
+    preview_path: "blog.html"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The headline of your post" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -49,7 +49,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Subject Line", name: "title", widget: "string" }
-      - { label: "Issue Number", name: "issue", widget: "string", hint: "e.g. Issue 1 — Spring 2025" }
+      - { label: "Issue Number", name: "issue", widget: "string", hint: "e.g. Issue 1 — Spring term" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Cover Image", name: "image", widget: "image", required: false }
       - { label: "Introduction", name: "intro", widget: "text", hint: "Opening paragraph" }
@@ -72,7 +72,7 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Gallery Title", name: "title", widget: "string", hint: "e.g. Annual Day 2025" }
+      - { label: "Gallery Title", name: "title", widget: "string", hint: "e.g. Annual Day" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
       - label: "Category"
@@ -112,6 +112,6 @@ collections:
           - { label: "Event", value: "event" }
           - { label: "Admissions", value: "admissions" }
       - { label: "Message", name: "body", widget: "markdown" }
-      - { label: "Important?", name: "important", widget: "boolean", default: false, hint: "Marks this announcement as high priority" }
+      - { label: "Important?", name: "important", widget: "boolean", default: false, hint: "Highlights a recent notice. Notices older than 90 days are shown as archived." }
       - { label: "Published", name: "published", widget: "boolean", default: true }
 

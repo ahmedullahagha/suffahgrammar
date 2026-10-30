@@ -33,3 +33,12 @@ The visual direction takes inspiration from Oak National Academy’s Who We Are 
 ## Enquiries and retained pages
 
 The homepage links to apply.html, contact.html and blog.html. All share styles.css, script.js, the school crest and favicon assets. contact.html uses contact.js to open an email draft; it does not claim server-side delivery. Admissions retain the existing Formspree endpoint. Email delivery and the Formspree account must be checked by the school. No WhatsApp service is advertised on the main school pages until account access is confirmed. Admissions use relative start-term choices to avoid expired dates.
+
+## School journal
+
+- `blog.html`, `blog.css`, `blog.js`: responsive journal, search/type filters, date sorting, load-more and full-page article reader. Article links use `blog.html?post=<stable-file-id>`. Legacy title hashes still open matching stories.
+- `news-core.js`: shared content parser, safe Markdown renderer and display helpers. Raw HTML in Markdown is displayed as text. Headings, emphasis, links, images, lists, blockquotes and fenced code are supported.
+- The page embeds the existing published content, so visitors see stories immediately without waiting for GitHub. It checks the repository tree in the background, reuses unchanged content and loads new/edited Markdown from this website, with timeouts and a retry option. If refresh fails, the embedded stories remain readable.
+- Keep using the existing editor collections: `_posts`, `_announcements`, `_galleries`, `_newsletters`. Real YAML lists, image captions and newsletter sections are supported. The existing editor authentication is unchanged. Drafts, future-dated posts and galleries without photos are excluded from the journal. Notices older than 90 days are clearly archived.
+- After editing content, run `node scripts/build-news-snapshot.cjs` from the repository and commit `blog.html` alongside the Markdown files to refresh the embedded fallback and no-JavaScript view. New posts still appear through the background refresh without running this command. When removing a published post, rebuild the snapshot too so it is also removed from the offline fallback.
+- Vendored dependency: js-yaml 4.1.1 (MIT), from https://github.com/nodeca/js-yaml/tree/4.1.1; license in `vendor/js-yaml.LICENSE.txt`. There are no CDN font or script requests on the journal.

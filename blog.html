@@ -1,313 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>News &amp; Updates | Suffah Grammar School</title>
-  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News &amp; Announcements | Suffah Grammar School</title>
+<meta name="description" content="Stories from our classrooms, school announcements and updates for the Suffah family in Quetta.">
+<meta name="theme-color" content="#123e70">
+<meta property="og:title" content="News & Announcements | Suffah Grammar School">
+<meta property="og:description" content="Inside our classrooms. Around our school. Updates for the Suffah family.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.suffahgrammar.com/assets/classroom-1200.webp">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#0e1e3a;--blue-mid:#2b5297;--blue:#3a6bbf;
-      --blue-light:#6a9fd4;--blue-faint:#f0f5fc;
-      --cream:#f7f5f0;--warm-white:#fdfcfa;
-      --text-dark:#0e1e3a;--text-mid:#3a4e6b;--text-light:#7a8ea8;
-      --gold:#c8a152;--gold-light:#e6c87a;
-      --trajan:'Cinzel',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:var(--sans);background:var(--warm-white);color:var(--text-dark);overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:92px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .3s}
-    nav.scrolled{box-shadow:0 4px 32px rgba(14,30,58,.5)}
-    .nav-logo{display:flex;align-items:center;text-decoration:none;flex-direction:column;justify-content:center}
-    .nav-logo-main{font-family:var(--trajan);font-size:26px;font-weight:600;color:var(--warm-white);letter-spacing:.06em;line-height:1.2}
-    .nav-logo-sub{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-light);margin-top:4px}
-    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
-    .nav-links a{font-size:14px;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:rgba(253,252,250,.7);text-decoration:none;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--warm-white)}
-    .nav-cta{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:12px 26px;border-radius:2px;text-decoration:none;transition:background .2s;white-space:nowrap}
-    .nav-cta:hover{background:var(--gold-light)}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-    .hamburger span{display:block;width:24px;height:1.5px;background:var(--warm-white)}
-    .mobile-menu{display:none;position:fixed;top:92px;left:0;right:0;z-index:199;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:24px 32px;flex-direction:column}
-    .mobile-menu.open{display:flex}
-    .mobile-menu a{font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(253,252,250,.75);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
-    .mobile-menu a:last-child{border-bottom:none;margin-top:16px;color:var(--gold)}
-    .page-header{background:var(--navy);padding:140px 48px 80px;position:relative;overflow:hidden}
-    .page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(106,159,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(106,159,212,.04) 1px,transparent 1px);background-size:54px 54px}
-    .page-header-accent{position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(58,107,191,.15) 0%,transparent 70%);pointer-events:none}
-    .page-header-inner{max-width:700px;position:relative;z-index:2}
-    .section-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:18px;display:block}
-    .page-header h1{font-family:var(--trajan);font-size:clamp(28px,5vw,56px);font-weight:400;color:var(--warm-white);margin-bottom:16px;letter-spacing:.03em;line-height:1.15}
-    .page-header p{font-size:17px;line-height:1.75;color:rgba(253,252,250,.65);max-width:520px}
-    .filter-bar{background:var(--blue-faint);padding:0 48px;border-bottom:1px solid rgba(14,30,58,.08)}
-    .filter-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
-    .filter-btn{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:18px 24px;cursor:pointer;color:var(--text-light);border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
-    .filter-btn:hover{color:var(--blue-mid)}
-    .filter-btn.active{color:var(--blue-mid);border-bottom-color:var(--blue-mid)}
-    .posts-section{padding:72px 48px;max-width:1100px;margin:0 auto}
-    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-    .post-card{background:var(--warm-white);border-radius:3px;overflow:hidden;border:1px solid rgba(14,30,58,.07);transition:transform .3s,box-shadow .3s;cursor:pointer;text-decoration:none;display:block;color:inherit}
-    .post-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,30,58,.1)}
-    .post-card-img{aspect-ratio:16/10;overflow:hidden;background:var(--blue-faint);display:flex;align-items:center;justify-content:center}
-    .post-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .post-card:hover .post-card-img img{transform:scale(1.05)}
-    .post-card-img-placeholder{font-family:var(--trajan);font-size:32px;color:var(--blue-light);opacity:.3}
-    .post-card-body{padding:24px}
-    .post-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:500;margin-bottom:10px;display:block}
-    .post-card-body h3{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--navy);line-height:1.35;margin-bottom:10px}
-    .post-card-body p{font-size:14px;line-height:1.7;color:var(--text-mid);margin-bottom:16px}
-    .post-meta{font-size:12px;color:var(--text-light);display:flex;gap:12px;align-items:center}
-    .post-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text-light)}
-    .post-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1.2fr 1fr}
-    .post-card.featured .post-card-img{aspect-ratio:unset;min-height:320px}
-    .post-card.featured .post-card-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
-    .post-card.featured h3{font-size:28px}
-    .newsletter-card{background:var(--navy);border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;transition:transform .3s;border:1px solid rgba(255,255,255,.06);cursor:pointer}
-    .newsletter-card:hover{transform:translateY(-4px)}
-    .nl-issue{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
-    .nl-title{font-family:var(--trajan);font-size:18px;font-weight:500;color:var(--warm-white);line-height:1.3;letter-spacing:.03em}
-    .nl-date{font-size:13px;color:rgba(253,252,250,.4)}
-    .nl-arrow{font-size:13px;color:var(--gold-light);margin-top:auto;letter-spacing:.08em}
-    .gallery-card{border-radius:3px;overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;aspect-ratio:4/3}
-    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .gallery-card:hover img{transform:scale(1.06)}
-    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,30,58,.85) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
-    .gallery-count{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-    .gallery-title{font-family:var(--trajan);font-size:16px;font-weight:500;color:var(--warm-white);letter-spacing:.04em}
-    .empty-state{grid-column:1/-1;text-align:center;padding:80px 0}
-    .empty-state h3{font-family:var(--trajan);font-size:22px;color:var(--text-light);margin-bottom:12px;letter-spacing:.04em}
-    .empty-state p{font-size:15px;color:var(--text-light);line-height:1.6}
-    .important-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px;font-weight:600;margin-left:8px;vertical-align:middle}
-    footer{background:var(--navy);color:var(--warm-white);padding:48px}
-    .footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-logo-text{font-family:var(--trajan);font-size:18px;font-weight:600;color:var(--warm-white);letter-spacing:.06em}
-    .footer-bottom p{font-size:13px;color:rgba(253,252,250,.3)}
-    .footer-links{display:flex;gap:20px}
-    .footer-links a{font-size:13px;color:rgba(253,252,250,.45);text-decoration:none;transition:color .2s}
-    .footer-links a:hover{color:var(--warm-white)}
-    @media(max-width:960px){
-      nav{padding:0 24px}
-      .nav-links,.nav-cta{display:none}
-      .hamburger{display:flex}
-      .page-header{padding:120px 28px 60px}
-      .filter-bar{padding:0 24px}
-      .posts-section{padding:48px 24px}
-      .posts-grid{grid-template-columns:1fr}
-      .post-card.featured{grid-template-columns:1fr}
-      .post-card.featured .post-card-img{min-height:220px}
-    }
-    @media(max-width:600px){
-      footer{padding:32px 24px}
-      .footer-bottom{flex-direction:column;align-items:flex-start}
-    }
-  </style>
 <link rel="stylesheet" href="styles.css?v=20261030">
+<link rel="stylesheet" href="blog.css?v=20261030-journal1">
 <script defer src="script.js"></script>
-</head>
-<body class="legacy-page">
-
+<script defer src="vendor/js-yaml.min.js?v=4.1.1"></script>
+<script defer src="news-core.js?v=20261030-journal1"></script>
+<script defer src="blog.js?v=20261030-journal1"></script>
+</head><body class="news-page">
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap"><span>Suffah Grammar School</span><span>Quetta, Pakistan</span></div></div>
 <header class="wrap">
 <a href="index.html#home" class="brand" aria-label="Suffah Grammar School home"><img src="assets/crest.webp" width="160" height="78" alt="Suffah Grammar School"></a>
 <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
-<nav id="navigation" aria-label="Main navigation"><a href="index.html#about">Our school</a><a href="index.html#digital">Digital learning</a><a href="index.html#pathway">Cambridge pathway</a><a href="blog.html">News</a><a href="contact.html">Contact</a><a class="button small" href="apply.html">Apply now <span aria-hidden="true">↗</span></a></nav>
-</header><main id="main">
-
-<div class="page-header">
-  <div class="page-header-accent"></div>
-  <div class="page-header-inner">
-    <span class="section-label" style="color:var(--gold)">From the School</span>
-    <h1>News &amp;<br>Updates</h1>
-    <p>Articles, announcements, photo galleries, and newsletters from Suffah Grammar School.</p>
-  </div>
+<nav id="navigation" aria-label="Main navigation"><a href="index.html#about">Our school</a><a href="index.html#digital">Digital learning</a><a href="index.html#pathway">Cambridge pathway</a><a href="blog.html" aria-current="page">News</a><a href="contact.html">Contact</a><a class="button small" href="apply.html">Apply now <span aria-hidden="true">↗</span></a></nav>
+</header>
+<main id="main">
+<div id="news-listing">
+<section class="news-hero wrap" aria-labelledby="news-title">
+<div><p class="eyebrow">The Suffah journal</p><h1 id="news-title">Life at <span class="highlight">Suffah.</span></h1><p class="intro">Inside our classrooms. Around our school.<br>Stories, announcements and updates for the Suffah family.</p></div>
+<figure><img src="assets/classroom-800.webp" srcset="assets/classroom-480.webp 480w, assets/classroom-800.webp 800w, assets/classroom-1200.webp 1200w" sizes="(max-width:600px) calc(100vw - 40px), 40vw" width="800" height="450" alt="A Suffah teacher explores fractions with pupils using a shared smart screen." fetchpriority="high"><figcaption>Learning made visible. Every day.</figcaption></figure>
+</section>
+<section class="news-tools wrap" aria-label="Browse school updates">
+<div class="search-row"><div class="search-field"><label for="news-search">Find a story or notice</label><input type="search" id="news-search" placeholder="Search news, events, announcements…" autocomplete="off" maxlength="160"></div><div class="sort-field"><label for="news-sort">Sort by</label><select id="news-sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div></div>
+<div class="news-filters" role="group" aria-label="Filter by update type">
+<button type="button" data-category="all" aria-pressed="true">All updates <span>2</span></button>
+<button type="button" data-category="post" aria-pressed="false">School news <span>1</span></button>
+<button type="button" data-category="announcement" aria-pressed="false">Announcements <span>1</span></button>
+<button type="button" data-category="gallery" aria-pressed="false">Galleries <span>0</span></button>
+<button type="button" data-category="newsletter" aria-pressed="false">Newsletters <span>0</span></button>
+</div></section>
+<div class="news-layout wrap"><div>
+<section class="featured-block" id="featured-story" aria-label="Featured school story"><!-- snapshot-feature:start --><p class="eyebrow">From the school</p><article class="story-card featured-story text-story"><div class="story-copy"><div class="story-meta"><span class="category">School News</span></div><h2><a href="blog.html?post=post-2026-05-02-our-first-month" data-post="post-2026-05-02-our-first-month">Reflections on Our First Month</a></h2><p>A month ago, Suffah Grammar School opened its doors for the first time. Here, we pause to reflect on what these weeks have meant — for our students, our families, and our staff.</p><div class="story-bottom"><time datetime="2026-05-02T04:00:00.000Z">2 May 2026</time><span>2 min read</span></div><a class="story-read" href="blog.html?post=post-2026-05-02-our-first-month" data-post="post-2026-05-02-our-first-month">Read story <span aria-hidden="true">↗</span><span class="sr-only">: Reflections on Our First Month</span></a></div></article><!-- snapshot-feature:end --></section>
+<section aria-labelledby="results-heading"><div class="results-heading"><h2 id="results-heading">Latest from Suffah</h2><p id="results-count" role="status" aria-live="polite" aria-atomic="true">2 updates</p></div>
+<div class="stories-grid" id="stories-grid"><!-- snapshot-cards:start --><article class="story-card text-story"><div class="story-copy"><div class="story-meta"><span class="category">Announcements</span><span class="archive-badge">Archived notice</span></div><h3><a href="blog.html?post=announcement-2026-05-01-school-closed-%E2%80%93-may-1st-public-holiday" data-post="announcement-2026-05-01-school-closed-–-may-1st-public-holiday">School Closed – May 1st Public Holiday</a></h3><p>Dear Parents and Students, Please be advised that Suffah Grammar School will be closed on Friday, 1st May 2026 in observance of the public holiday. School will resume as normal on Monday, 4th May 2026. We wish …</p><div class="story-bottom"><time datetime="2026-05-01T17:07:00.000Z">1 May 2026</time><span>1 min read</span></div><a class="story-read" href="blog.html?post=announcement-2026-05-01-school-closed-%E2%80%93-may-1st-public-holiday" data-post="announcement-2026-05-01-school-closed-–-may-1st-public-holiday">Read story <span aria-hidden="true">↗</span><span class="sr-only">: School Closed – May 1st Public Holiday</span></a></div></article><!-- snapshot-cards:end --></div>
+<div class="news-state" id="no-results" hidden><h3>No matching updates.</h3><p>Try another word or browse all news and announcements.</p><button type="button" id="clear-search">Clear filters</button></div>
+<div class="news-load"><button type="button" id="load-more" hidden>Load more updates ↓</button></div>
+<div class="news-sync"><span id="news-status" role="status">Published school updates</span><button id="retry-news" type="button" hidden>Check again</button></div>
+</section></div>
+<aside class="news-aside" aria-label="For parents"><section><p class="eyebrow">For the Suffah family</p><h2 id="notice-heading">School notices</h2><ul class="notice-list" id="notice-list"><li><span class="notice-date">1 May 2026 · Archived</span><a href="blog.html?post=announcement-2026-05-01-school-closed-%E2%80%93-may-1st-public-holiday">School Closed – May 1st Public Holiday ↗</a></li></ul></section>
+<div class="parent-card"><h3>A question for us?</h3><p>For admissions, a school visit or a question about your child’s learning, we’re here to help.</p><a href="contact.html">Contact the school →</a></div><p class="archive-help">Every notice carries its original date. Older announcements remain available as an archive.</p>
+</aside></div>
+<noscript><section class="wrap"><p>JavaScript is off. Read the published stories below; enable it for search, filters and the latest updates.</p><!-- snapshot-noscript:start --><details><summary>Reflections on Our First Month</summary><p>2 May 2026</p><div class="article-body"><p>A month ago, Suffah Grammar School opened its doors for the first time. The morning was quiet in the way that meaningful mornings often are — a stillness before something begins. And then the children arrived.</p><p>Looking back now, what strikes me most is not any single event, but the texture of ordinary days. Students finding their seats. Teachers learning names. The small negotiations of a community figuring itself out.</p><h3>A Beginning Worth Remembering</h3><p>The first weeks of any school carry a particular kind of energy. There is nervousness, of course — in children, in parents, in staff. But there is also something rarer: genuine openness. Everyone arrives without the weight of old habits. Everything is being built from the start.</p><p>Our classrooms found their rhythm sooner than we expected. Within days, students were asking questions, challenging each other&#39;s thinking, and — most encouragingly — making mistakes without fear. That last part matters more than anything. A student who is afraid to be wrong will never truly learn.</p><h3>What We Are Building Together</h3><p>Suffah Grammar School was always going to be more than a building and a timetable. From the beginning, we wanted to create an environment where academic rigour and human warmth are not in tension but reinforce each other. These first weeks have shown us that this is possible.</p><p>We have seen it in the way older students have looked out for younger ones, without being asked. In the conversations between parents at the gate that have stretched longer than anyone planned. In the pride on a child&#39;s face when they finally grasp something difficult — and the teacher&#39;s quiet satisfaction beside them.</p><p>These are not small things. These are the foundations.</p><h3>Looking Ahead</h3><p>There is much still to build. We are honest about that. But we enter the coming months with something we did not entirely expect to feel so quickly: confidence. Confidence that the students here are capable of extraordinary things. Confidence that the families who have placed their trust in us have made the right decision. Confidence that the staff we have assembled are not just competent, but genuinely committed.</p><p>The first month is behind us. The rest of the year stretches ahead — full of possibility.</p><p>We are grateful you are part of it.</p></div></details><details><summary>School Closed – May 1st Public Holiday</summary><p>1 May 2026</p><div class="article-body"><p>Dear Parents and Students,</p><p>Please be advised that Suffah Grammar School will be closed on Friday, 1st May 2026 in observance of the public holiday.</p><p>School will resume as normal on Monday, 4th May 2026. We wish all our families a safe and restful holiday.</p></div></details><!-- snapshot-noscript:end --></section></noscript>
 </div>
-
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all" onclick="filterPosts(this,'all')">All</button>
-    <button class="filter-btn" data-filter="announcement" onclick="filterPosts(this,'announcement')">Announcements</button>
-    <button class="filter-btn" data-filter="post" onclick="filterPosts(this,'post')">School News</button>
-    <button class="filter-btn" data-filter="newsletter" onclick="filterPosts(this,'newsletter')">Newsletters</button>
-    <button class="filter-btn" data-filter="gallery" onclick="filterPosts(this,'gallery')">Galleries</button>
-  </div>
-</div>
-
-<div class="posts-section">
-  <div class="posts-grid" id="posts-grid">
-    <div class="empty-state"><h3>Loading&hellip;</h3></div>
-  </div>
-</div>
-
-<div id="post-modal" onclick="if(event.target===this)closePost()" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(14,30,58,.85);overflow-y:auto;padding:60px 20px 60px">
-  <div style="max-width:740px;margin:0 auto;background:var(--warm-white);border-radius:4px;padding:56px 64px;position:relative">
-    <button onclick="closePost()" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-light);line-height:1" aria-label="Close">&#x00D7;</button>
-    <div id="post-modal-content"></div>
-  </div>
-</div>
-
-</main><footer><div class="wrap footer-inner"><span>Suffah Grammar School</span><p>Lifelong learning starts here.</p><a href="index.html#home">Home ↑</a></div><div class="wrap footer-socials" aria-label="Follow Suffah Grammar School"><a href="https://www.facebook.com/731927980005603" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/suffahgrammar" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="apply.html">Apply now</a><a href="contact.html">Contact</a><a href="tel:+923398877886">+92 339 887 7886</a></div><div class="wrap copyright">© <span id="year">2026</span> Suffah Grammar School</div></footer>
-
-<script>
-if(window.netlifyIdentity){window.netlifyIdentity.on('init',u=>{if(!u)window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';});});}
-
-const API='https://api.github.com/repos/ahmedullahagha/suffahgrammar/contents/';
-let allItems=[];
-
-function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
-
-function parseFM(t){
-  const m=t.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
-  if(!m)return{data:{},body:t};
-  const d={};
-  m[1].split('\n').forEach(l=>{
-    const p=l.match(/^([^:]+):\s*(.+)$/);
-    if(p){let k=p[1].trim(),v=p[2].trim().replace(/^[\x22\x27]|[\x22\x27]$/g,'');
-    if(v==='true')v=true;else if(v==='false')v=false;d[k]=v;}
-  });
-  return{data:d,body:m[2].trim()};
-}
-
-function fmtDate(d){try{return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}catch{return d||'';}}
-
-function mdToHTML(md){
-  return md.split(/\n\n+/).map(b=>{
-    if(/^##\s/.test(b))return '<h2 style="font-family:var(--trajan);font-size:20px;font-weight:400;color:var(--navy);margin:28px 0 10px">'+b.replace(/^##\s/,'')+'</h2>';
-    if(/^#\s/.test(b))return '<h1 style="font-family:var(--trajan);font-size:26px;font-weight:400;color:var(--navy);margin:0 0 14px">'+b.replace(/^#\s/,'')+'</h1>';
-    return '<p style="font-size:16px;line-height:1.85;color:var(--text-mid);margin-bottom:18px">'+b.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')+'</p>';
-  }).join('');
-}
-
-async function fetchFolder(f){
-  try{const r=await fetch(API+f);if(!r.ok)return[];const j=await r.json();return Array.isArray(j)?j.filter(x=>x.name.endsWith('.md')):[];}catch{return[];}
-}
-
-async function fetchParse(url){
-  try{const r=await fetch(url);if(!r.ok)return null;return parseFM(await r.text());}catch{return null;}
-}
-
-function renderCard(item,i){
-  if(item.type==='announcement'){
-    const imp=item.data.important===true||item.data.important==='true';
-    const badge=imp?'<span class="important-badge">Important</span>':'';
-    const lbl=item.data.type?item.data.type.charAt(0).toUpperCase()+item.data.type.slice(1):'Announcement';
-    const prev=(item.body||'').replace(/\n+/g,' ').substring(0,200);
-    return '<div class="post-card" data-index="'+i+'" data-category="announcement" style="border-top:3px solid var(--gold)"><div class="post-card-body"><span class="post-tag" style="color:var(--gold)">📢 '+lbl+'</span><h3 style="font-family:var(--sans);font-size:18px;font-weight:500;margin-bottom:8px">'+(item.data.title||'')+badge+'</h3><p>'+prev+(prev.length>=200?'…':'')+'</p><div class="post-meta" style="margin-top:12px"><span>'+fmtDate(item.data.date)+'</span></div></div></div>';
-  }
-  if(item.type==='post'){
-    const prev=(item.data.summary||item.body||'').replace(/\n+/g,' ').substring(0,160);
-    const img=item.data.image?'<div class="post-card-img"><img src="'+item.data.image+'" alt="'+(item.data.title||'')+'"/></div>':'<div class="post-card-img"><span class="post-card-img-placeholder">SG</span></div>';
-    return '<div class="post-card" data-index="'+i+'" data-category="post">'+img+'<div class="post-card-body"><span class="post-tag">'+(item.data.category||'School News')+'</span><h3>'+(item.data.title||'')+'</h3><p>'+prev+(prev.length>=160?'…':'')+'</p><div class="post-meta"><span>'+fmtDate(item.data.date)+'</span>'+(item.data.author?'<span class="post-meta-dot"></span><span>'+item.data.author+'</span>':'')+'</div></div></div>';
-  }
-  if(item.type==='newsletter'){
-    return '<div class="newsletter-card" data-index="'+i+'" data-category="newsletter"><span class="nl-issue">Newsletter</span><span class="nl-title">'+(item.data.title||'')+'</span><span class="nl-date">'+fmtDate(item.data.date)+'</span><span class="nl-arrow">Read more →</span></div>';
-  }
-  if(item.type==='gallery'){
-    const photos=(item.data.photos||'').split(',').map(s=>s.trim()).filter(Boolean);
-    const count=photos.length;
-    const cover=item.data.cover||(photos[0]||'');
-    const coverHtml=cover?'<img src="'+cover+'" alt="'+(item.data.title||'')+'" style="width:100%;height:100%;object-fit:cover"/>':'<div style="width:100%;height:100%;background:var(--blue-faint);display:flex;align-items:center;justify-content:center"><span class="post-card-img-placeholder">SG</span></div>';
-    return '<div class="gallery-card" data-index="'+i+'" data-category="gallery">'+coverHtml+'<div class="gallery-overlay">'+(count?'<span class="gallery-count">'+count+' photo'+(count!==1?'s':'')+'</span>':'')+'<span class="gallery-title">'+(item.data.title||'')+'</span></div></div>';
-  }
-  return '';
-}
-
-async function loadContent(){
-  const grid=document.getElementById('posts-grid');
-  const items=[];
-  for(const f of await fetchFolder('_announcements')){
-    const p=await fetchParse(f.download_url);
-    if(p&&p.data.published!==false)items.push({type:'announcement',...p,date:new Date(p.data.date)});
-  }
-  for(const f of await fetchFolder('_posts')){
-    const p=await fetchParse(f.download_url);
-    if(p&&p.data.published!==false)items.push({type:'post',...p,date:new Date(p.data.date)});
-  }
-  for(const f of await fetchFolder('_newsletters')){
-    const p=await fetchParse(f.download_url);
-    if(p&&p.data.published!==false)items.push({type:'newsletter',...p,date:new Date(p.data.date)});
-  }
-  for(const f of await fetchFolder('_galleries')){
-    const p=await fetchParse(f.download_url);
-    if(p&&p.data.published!==false)items.push({type:'gallery',...p,date:new Date(p.data.date)});
-  }
-  items.sort((a,b)=>b.date-a.date);
-  allItems=items;
-  if(items.length===0){
-    grid.innerHTML='<div class="empty-state"><h3>Coming Soon</h3><p>Articles, galleries, and newsletters will appear here once published.</p></div>';
-    return;
-  }
-  grid.innerHTML=items.map((item,i)=>renderCard(item,i)).join('');
-}
-
-document.getElementById('posts-grid').addEventListener('click',function(e){
-  const card=e.target.closest('[data-index]');
-  if(card)openPost(allItems[+card.dataset.index]);
-});
-
-function openPost(item){
-  if(!item)return;
-  const modal=document.getElementById('post-modal');
-  const content=document.getElementById('post-modal-content');
-  if(item.type==='gallery'){
-    const photos=(item.data.photos||'').split(',').map(s=>s.trim()).filter(Boolean);
-    const desc=item.body?'<p style="font-size:16px;line-height:1.75;color:var(--text-mid);margin-bottom:24px">'+item.body+'</p>':'';
-    const photoGrid=photos.length?'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:4px">'+photos.map(function(url){return '<div onclick="openLightbox(this.querySelector(\'img\').src)" style="aspect-ratio:4/3;overflow:hidden;border-radius:2px;cursor:zoom-in"><img src="'+url+'" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform=\'scale(1.06)\'" onmouseout="this.style.transform=\'scale(1)\'"/></div>';}).join('')+'</div>':'<p style="color:var(--text-light);font-style:italic;margin-top:16px">No photos yet.</p>';
-    content.innerHTML='<span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:12px">Gallery</span>'+'<h1 style="font-family:var(--trajan);font-size:28px;font-weight:400;color:var(--navy);margin:0 0 8px;letter-spacing:.03em">'+(item.data.title||'')+'</h1>'+'<p style="font-size:13px;color:var(--text-light);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(14,30,58,.08)">'+fmtDate(item.data.date)+'</p>'+desc+photoGrid;
-  } else {
-    const typeLabel=item.type==='announcement'?'<span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:12px">📢 Announcement</span>':'<span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:500;display:block;margin-bottom:12px">'+(item.data.category||'School News')+'</span>';
-    const shareBtn='<div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(14,30,58,.08)"><button id="share-btn" onclick="sharePost()" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--blue-mid);background:none;border:1px solid var(--blue-mid);padding:10px 24px;border-radius:2px;cursor:pointer">Share link</button></div>';
-    content.innerHTML=typeLabel+'<h1 style="font-family:var(--trajan);font-size:28px;font-weight:400;color:var(--navy);margin:0 0 8px;letter-spacing:.03em">'+(item.data.title||'')+'</h1>'+'<p style="font-size:13px;color:var(--text-light);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(14,30,58,.08)">'+fmtDate(item.data.date)+'</p>'+mdToHTML(item.body)+shareBtn;
-  }
-  modal.style.display='block';
-  document.body.style.overflow='hidden';
-  history.pushState(null,'',window.location.pathname+'#'+slugify(item.data.title));
-}
-
-function openLightbox(url){
-  const lb=document.createElement('div');
-  lb.style.cssText='position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;cursor:zoom-out';
-  const esc=function(e){if(e.key==='Escape'){lb.remove();document.removeEventListener('keydown',esc);}};
-  document.addEventListener('keydown',esc);
-  lb.onclick=function(){lb.remove();document.removeEventListener('keydown',esc);};
-  lb.innerHTML='<img src="'+url+'" style="max-width:92vw;max-height:92vh;object-fit:contain;border-radius:2px"/>';
-  document.body.appendChild(lb);
-}
-
-function closePost(){
-  document.getElementById('post-modal').style.display='none';
-  document.body.style.overflow='';
-  history.pushState(null,'',window.location.pathname);
-}
-
-function sharePost(){
-  navigator.clipboard.writeText(window.location.href).then(()=>{
-    const btn=document.getElementById('share-btn');
-    if(btn){btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Share link';},2000);}
-  });
-}
-
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('lightbox'))closePost();});
-
-function filterPosts(btn,cat){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#posts-grid [data-index]').forEach(card=>{
-    card.style.display=(cat==='all'||card.dataset.category===cat)?'':'none';
-  });
-}
-
-loadContent().then(()=>{
-  const hash=decodeURIComponent(window.location.hash.slice(1));
-  if(hash&&allItems.length){const match=allItems.find(it=>slugify(it.data.title)===hash);if(match)openPost(match);}
-});
-</script>
-</body>
-</html>
-
+<section class="news-reader wrap" id="news-reader" aria-label="Read a school update" hidden></section>
+</main>
+<footer><div class="wrap footer-inner"><span>Suffah Grammar School</span><p>Lifelong learning starts here.</p><a href="index.html#home">Home ↑</a></div><div class="wrap footer-socials" aria-label="Follow Suffah Grammar School"><a href="https://www.facebook.com/731927980005603" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/suffahgrammar" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="apply.html">Apply now</a><a href="contact.html">Contact</a><a href="tel:+923398877886">+92 339 887 7886</a></div><div class="wrap copyright">© <span id="year">2026</span> Suffah Grammar School</div></footer>
+<script id="news-snapshot" type="application/json">[{"id":"post-2026-05-02-our-first-month","path":"_posts/2026-05-02-our-first-month.md","type":"post","title":"Reflections on Our First Month","date":"2026-05-02T04:00:00.000Z","category":"School News","author":"","summary":"A month ago, Suffah Grammar School opened its doors for the first time. Here, we pause to reflect on what these weeks have meant — for our students, our families, and our staff.","body":"A month ago, Suffah Grammar School opened its doors for the first time. The morning was quiet in the way that meaningful mornings often are — a stillness before something begins. And then the children arrived.\n\nLooking back now, what strikes me most is not any single event, but the texture of ordinary days. Students finding their seats. Teachers learning names. The small negotiations of a community figuring itself out.\n\n## A Beginning Worth Remembering\n\nThe first weeks of any school carry a particular kind of energy. There is nervousness, of course — in children, in parents, in staff. But there is also something rarer: genuine openness. Everyone arrives without the weight of old habits. Everything is being built from the start.\n\nOur classrooms found their rhythm sooner than we expected. Within days, students were asking questions, challenging each other's thinking, and — most encouragingly — making mistakes without fear. That last part matters more than anything. A student who is afraid to be wrong will never truly learn.\n\n## What We Are Building Together\n\nSuffah Grammar School was always going to be more than a building and a timetable. From the beginning, we wanted to create an environment where academic rigour and human warmth are not in tension but reinforce each other. These first weeks have shown us that this is possible.\n\nWe have seen it in the way older students have looked out for younger ones, without being asked. In the conversations between parents at the gate that have stretched longer than anyone planned. In the pride on a child's face when they finally grasp something difficult — and the teacher's quiet satisfaction beside them.\n\nThese are not small things. These are the foundations.\n\n## Looking Ahead\n\nThere is much still to build. We are honest about that. But we enter the coming months with something we did not entirely expect to feel so quickly: confidence. Confidence that the students here are capable of extraordinary things. Confidence that the families who have placed their trust in us have made the right decision. Confidence that the staff we have assembled are not just competent, but genuinely committed.\n\nThe first month is behind us. The rest of the year stretches ahead — full of possibility.\n\nWe are grateful you are part of it.","image":"","caption":"","photos":[],"sections":[],"intro":"","issue":"","important":false,"sourceSha":"d81557ab995dd23e63a5d8ee8170ddef12369d36"},{"id":"announcement-2026-05-01-school-closed-–-may-1st-public-holiday","path":"_announcements/2026-05-01-school-closed-–-may-1st-public-holiday.md","type":"announcement","title":"School Closed – May 1st Public Holiday","date":"2026-05-01T17:07:00.000Z","category":"","author":"","summary":"Dear Parents and Students, Please be advised that Suffah Grammar School will be closed on Friday, 1st May 2026 in observance of the public holiday. School will resume as normal on Monday, 4th May 2026. We wish …","body":"Dear Parents and Students,\n\n\n\nPlease be advised that Suffah Grammar School will be closed on Friday, 1st May 2026 in observance of the public holiday.\n\n\n\nSchool will resume as normal on Monday, 4th May 2026. We wish all our families a safe and restful holiday.","image":"","caption":"","photos":[],"sections":[],"intro":"","issue":"","important":true,"sourceSha":"68a54e76a9f38b4fb77416b355ac834c15ec6aaa"}]</script>
+</body></html>
